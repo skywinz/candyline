@@ -17,9 +17,10 @@ export class BlogPostService extends Service {
         const fullPath = `${this.directoryPath}/${postId}.md`;
         const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
         const contentHtml = await remark().use(html).process(post.content);
+
         return {
             content: contentHtml.value,
-            date: new Date(),
+            date: new Date(post.data.date),
             image: post.data.image,
             layout: post.data.layout,
             series: post.data.series,
