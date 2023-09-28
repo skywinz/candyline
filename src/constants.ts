@@ -1,0 +1,1 @@
+export const BaseURL: string = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:3000' : process.env.NEXT_BASE_URL;
