@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 const NotFound404: React.FC = () => {

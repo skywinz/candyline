@@ -1,2 +1,32 @@
-body {
+html {
+    font-family: 'Hahmlet', serif;
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+h1 {
+    width: 100%;
+    background-color: #AFD2F066;
+}
+
+code {
+    font-family: 'Nanum Gothic Coding', cursive;
+    white-space: pre-wrap;
+    font-size: 0.9em;
+    line-height: 70%;
+    color: white;
+}
+
+pre {
+    background-color: #3f3f3f;
+    padding: 15px;
+    border: 10px solid #AFD2F066;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+blockquote {
+    padding: 1px 20px 3px 20px;
+    margin-left: 0;
+    border-left: 7px solid #034D6D;
+    background-color: #79CEF050;
 }
