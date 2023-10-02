@@ -9,14 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/marked": "^5.0.2",
     "@types/node": "20.6.4",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
+    "@types/sass": "^1.45.0",
+    "@types/styled-components": "^5.1.28",
     "eslint": "8.50.0",
     "eslint-config-next": "13.5.2",
+    "fs": "^0.0.1-security",
+    "gray-matter": "^4.0.3",
+    "marked": "^9.0.3",
     "next": "13.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.68.0",
+    "styled-components": "^6.0.8",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0"
   }
 }

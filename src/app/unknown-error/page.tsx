@@ -1,10 +1,12 @@
+'use client';
+
 import React from 'react';
 
 const Page: React.FC = () => {
     return (
-        <main>
-            <h1>hello world</h1>
-        </main>
+        <div>
+            <h1>알수없는 에러</h1>
+        </div>
     );
 }
 export default Page;
