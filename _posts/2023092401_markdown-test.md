@@ -14,6 +14,9 @@ image: ""
 #### H4
 ##### H5
 
+
+코드도 섞여있어 ```code is mixed``` 요. 코드도 섞여있어 ```code is mixed``` 요. 코드도 섞여있어 ```code is mixed``` 요. 코드도 섞여있어 ```code is mixed``` 요. 코드도 섞여있어 ```code is mixed``` 요. 코드도 섞여있어 ```code is mixed``` 요. 코드도 섞여있어 ```code is mixed``` 요.
+
 # 테스트
 해당 문법은 kramdown입니다.
 * * *
@@ -52,9 +55,6 @@ aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbccccccccccccccccdfdddddddddddddddddd
 * Normal
 * _italics_
 * <del>Strikethrough</del>
-* -- endash --
-* --- em-dash ---
-* ... ellipsis
 * Emoji: 👌
 * **bold**
 

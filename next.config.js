@@ -5,4 +5,7 @@ module.exports ={
         config.resolve.fallback = {fs: false};
         return config;
     },
+    compiler: {
+        styledComponents: true,
+    }
 };

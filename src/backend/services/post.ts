@@ -3,16 +3,16 @@ import fs from 'fs';
 import matter, {GrayMatterFile} from 'gray-matter';
 
 import {Service} from '@/backend/services/index';
-import {PostData} from '@/types/post';
+import {PostCategories, PostData} from '@/types/post';
 
 
 export class BlogPostService extends Service {
     private static instance: BlogPostService | null = null;
     private directoryPath: string = path.join(process.cwd(), '_posts');
-    private posts: Map<string, PostData>;
+    private posts: Map<string, PostCategories>;
 
     private async getPostDataFromStorage(postId: string): Promise<PostData> {
-        const fullPath = `${this.directoryPath}/${postId}.mdx`;
+        const fullPath = `${this.directoryPath}/${postId}.md`;
         const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
 
         return {
@@ -38,14 +38,16 @@ export class BlogPostService extends Service {
         const postFilenames: Array<string> = fs.readdirSync(this.directoryPath);
 
         await Promise.all(postFilenames.map(async (filename) => {
-            const postId = filename.slice(0, -4);
+            const postId = filename.slice(0, -3);
             await this.getPostDataFromStorage(
                 postId
             ).then((postData) => {
+                delete postData.content;
                 this.posts.set(postId, postData);
             }).catch(() => {}); // 파일을 못불러와도 그냥 패스
         }))
     }
+
     private async init() {
         await this.collectPostsToMemory();
     }
@@ -62,11 +64,18 @@ export class BlogPostService extends Service {
         if(!this.posts.has(postId)) {
             return null;
         }
-        let postFileName: PostData | undefined | null = this.posts.get(postId);
+        let postCategories: PostCategories | undefined | null = this.posts.get(postId);
 
-        if (!postFileName) {
-            postFileName = null;
+        if (!postCategories) {
+            return null;
         }
-        return postFileName;
+
+        const fullPath = `${this.directoryPath}/${postId}.md`;
+        const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
+
+        return {
+            ...postCategories,
+            content: post.content,
+        }
     }
 }

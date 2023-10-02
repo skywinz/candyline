@@ -1,5 +1,8 @@
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { redirect } from 'next/navigation';
+
+import {redirect} from 'next/navigation';
+import PostContentContainer from '@/components/post/detail/PostContentContainer';
+import PostTitleContainer from '@/components/post/detail/PostTitleContainer';
+import TagList from '@/components/common/TagList';
 import {getPostDetail} from '@/apis/internal/post';
 import {CacheForComponentType} from '@/apis/internal';
 
@@ -14,13 +17,12 @@ const PostDetailPage = async ({params, _}) => {
         redirect('/unknown-error');
     }
 
-
-    if(!data) { return null; }
     return (
-        <div>
-            <h1>안녕하세요</h1>
-            <MDXRemote source={data.content} />
-        </div>
+        <>
+            <PostTitleContainer title={data.title} date={new Date(data.date)} series={data.series} />
+            <PostContentContainer content={data.content} />
+            <TagList tags={data.tags} />
+        </>
     );
 }
 

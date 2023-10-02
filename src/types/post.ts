@@ -1,5 +1,4 @@
-export interface PostData {
-    content: string;
+export interface BasePostData {
     date: Date;
     image: string;
     layout: string;
@@ -7,4 +6,12 @@ export interface PostData {
     summary: string;
     tags: Array<string>;
     title: string;
+}
+
+export interface PostData extends BasePostData{
+    content: string;
+}
+
+export interface PostCategories extends BasePostData {
+
 }
