@@ -80,6 +80,19 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
     
+    table {
+        background-color: ${(props) => props.theme.markdown.table.backgroundColor};
+        color: ${(props) => props.theme.markdown.table.fontColor};
+        text-align: center;
+    }
+    thead tr {
+        background-color: ${(props) => props.theme.markdown.thead.backgroundColor};
+        color: ${(props) => props.theme.markdown.thead.fontColor};
+    }
+    td, th {
+        padding: 5px 20px 5px 20px;
+    }
+    
     .default-layout {
         padding: ${defaultLayoutPadding};
     }

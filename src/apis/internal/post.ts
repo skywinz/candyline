@@ -1,9 +1,9 @@
-import {headers} from 'next/headers';
+import {PostListResponse} from '@/types/post';
+import {ErrorResponse} from '@/types';
+import {postListSize} from '@/constants';
 
-export const getPostDetail = async (id: string, componentType): Promise<object> => {
-    const host = headers().get('host');
-    const protocol = process?.env.NODE_ENV==="development"?"http":"https"
-    const res = await fetch(`${protocol}://${host}/api/posts/${id}`, {cache: componentType});
+export const getPostDetail = async (host: string, id: string, componentType): Promise<object> => {
+    const res = await fetch(`${host}/api/posts/${id}`, {cache: componentType});
     const statusCode = res.status;
 
     if (res.ok) {
@@ -11,5 +11,20 @@ export const getPostDetail = async (id: string, componentType): Promise<object> 
         return { data, statusCode }
     } else {
         return { statusCode }
+    }
+}
+
+export const getPostList = async (host: string, index: number, componentType): Promise<PostListResponse | ErrorResponse> => {
+    const res = await fetch(`${host}/api/posts?offset=${index}&size=${postListSize}`, {cache: componentType});
+    if (res.ok) {
+        const data = await res.json();
+        return {
+            statusCode: 200,
+            ...data,
+        }
+    } else {
+        return {
+            statusCode: 500,
+        }
     }
 }

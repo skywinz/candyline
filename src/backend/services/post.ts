@@ -3,19 +3,21 @@ import fs from 'fs';
 import matter, {GrayMatterFile} from 'gray-matter';
 
 import {Service} from '@/backend/services/index';
-import {PostCategories, PostData} from '@/types/post';
+import {BasePostData, PostCategory, PostData, PostFilter} from '@/types/post';
 
 
 export class BlogPostService extends Service {
     private static instance: BlogPostService | null = null;
     private directoryPath: string = path.join(process.cwd(), '_posts');
-    private posts: Map<string, PostCategories>;
+    private posts: PostCategory[];
+    private indexes: Map<string, number>;
 
     private async getPostDataFromStorage(postId: string): Promise<PostData> {
         const fullPath = `${this.directoryPath}/${postId}.md`;
         const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
 
         return {
+            id: postId,
             content: post.content,
             date: new Date(post.data.date),
             image: post.data.image,
@@ -31,11 +33,11 @@ export class BlogPostService extends Service {
      * 어플리케이션 부팅 및 Service 처음 사용 시
      * 모든 POST 파일들을 읽어 메모리에 저장한다
      * 포스트를 빠른 속도로 불러오기 위한 목적으로 사용되는 함수
-     * TODO 단 데이터용량에 대한 이슈가 발생할 수 있으므로 추후 개선이 필요
      */
     private async collectPostsToMemory(): Promise<void> {
-        this.posts = new Map<string, PostData>();
-        const postFilenames: Array<string> = fs.readdirSync(this.directoryPath);
+        this.posts = [];
+        this.indexes = new Map<string, number>();
+        const postFilenames: string[] = fs.readdirSync(this.directoryPath);
 
         await Promise.all(postFilenames.map(async (filename) => {
             const postId = filename.slice(0, -3);
@@ -43,9 +45,20 @@ export class BlogPostService extends Service {
                 postId
             ).then((postData) => {
                 delete postData.content;
-                this.posts.set(postId, postData);
+                this.posts.push(postData);
+                this.indexes.set(postId, this.posts.length - 1);
             }).catch(() => {}); // 파일을 못불러와도 그냥 패스
         }))
+
+        this.posts.sort((d1, d2) => {
+            if (d1 === d2) {
+                return 0;
+            } else if (d1 > d2) {
+                return -1;
+            } else {
+                return 1;
+            }
+        })
     }
 
     private async init() {
@@ -60,11 +73,11 @@ export class BlogPostService extends Service {
         return BlogPostService.instance;
     }
 
-    public getPost(postId: string): PostData | null {
-        if(!this.posts.has(postId)) {
+    public getDetail(postId: string): PostData | null {
+        if(!this.indexes.has(postId)) {
             return null;
         }
-        let postCategories: PostCategories | undefined | null = this.posts.get(postId);
+        let postCategories: PostCategory | undefined | null = this.posts[this.indexes.get(postId)];
 
         if (!postCategories) {
             return null;
@@ -77,5 +90,27 @@ export class BlogPostService extends Service {
             ...postCategories,
             content: post.content,
         }
+    }
+
+    public getList(startIndex: number = 0, pageSize: number = 10, filter: PostFilter = {}): {posts: PostCategory[], nextIndex: number | null} {
+        let cnt = 0;
+        const posts: PostCategory[] = [];
+
+        for (let i = startIndex; i < this.posts.length; i++) {
+            const postCategory = this.posts[i];
+            if (cnt === pageSize + 1) {
+                break;
+            }
+            posts.push(postCategory);
+            cnt++;
+        }
+
+        let nextIndex = null;
+        if (cnt == pageSize + 1) {
+            nextIndex = this.indexes.get(posts.at(-1).id)
+            posts.pop();
+        }
+
+        return {posts, nextIndex};
     }
 }

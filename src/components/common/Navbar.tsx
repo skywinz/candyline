@@ -16,8 +16,8 @@ const Navbar = () => {
                 <Link href='/posts' style={navbarTestStyle}>
                     <Category>POSTS</Category>
                 </Link>
-                <Link href='/books' style={navbarTestStyle}>
-                    <Category>BOOKS</Category>
+                <Link href='/series' style={navbarTestStyle}>
+                    <Category>SERIES</Category>
                 </Link>
             </CategoryContainer>
         </Layout>
@@ -27,6 +27,7 @@ const Navbar = () => {
 export default Navbar;
 
 const Layout = styled.div`
+  z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;

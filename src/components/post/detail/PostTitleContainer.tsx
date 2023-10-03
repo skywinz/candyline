@@ -1,6 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
+import {date2String} from '@/utils/date';
 
 interface PostTitleContainerParams {
     title: string,
@@ -10,7 +11,7 @@ interface PostTitleContainerParams {
 
 const PostTitleContainer = (params: PostTitleContainerParams) => {
     const date = params.date;
-    const stringDate = `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDate()} ${date.getHours()}시 ${date.getMinutes()}분`;
+    const stringDate = date2String(date, true);
     const {title, series} = params;
 
     return (

@@ -4,12 +4,14 @@ import PostContentContainer from '@/components/post/detail/PostContentContainer'
 import PostTitleContainer from '@/components/post/detail/PostTitleContainer';
 import TagList from '@/components/common/TagList';
 import {getPostDetail} from '@/apis/internal/post';
-import {CacheForComponentType} from '@/apis/internal';
+import {CacheForComponentType} from '@/types/api';
+import {getInternalAPIHost} from '@/apis/internal';
 
 
 const PostDetailPage = async ({params, _}) => {
     const id = params.id;
-    const {data, statusCode} = await getPostDetail(id, CacheForComponentType.SERVER);
+    const host = getInternalAPIHost();
+    const {data, statusCode} = await getPostDetail(host, id, CacheForComponentType.SERVER);
 
     if (statusCode === 404) {
         redirect('/404');

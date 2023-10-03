@@ -1,4 +1,5 @@
 export interface BasePostData {
+    id: string;
     date: Date;
     image: string;
     layout: string;
@@ -8,10 +9,20 @@ export interface BasePostData {
     title: string;
 }
 
-export interface PostData extends BasePostData{
+export interface PostData extends BasePostData {
     content: string;
 }
 
-export interface PostCategories extends BasePostData {
+export interface PostCategory extends BasePostData {
 
+}
+
+export interface PostFilter {
+
+}
+
+export interface PostListResponse {
+    posts: PostCategory[];
+    count: number;
+    nextIndex: number | null;
 }

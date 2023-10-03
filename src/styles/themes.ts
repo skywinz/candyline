@@ -11,6 +11,13 @@ export const LightThemes = {
         postDetail: {
             titleBackgroundColor: ColorBase.blue350,
             titleFontColor: ColorBase.white,
+        },
+        postList: {
+            postItemBackgroundColor: ColorBase.white,
+            postItemHoveredBackgroundColor: ColorBase.blue12,
+            postItemTitleColor: ColorBase.blue300,
+            postItemSeriesBackgroundColor: ColorBase.blue250,
+            postItemSeriesFontColor: ColorBase.white,
         }
     },
     markdown: {
@@ -33,6 +40,14 @@ export const LightThemes = {
         a: {
             normalFontColor: ColorBase.blue200,
             hoveredFontColor: ColorBase.red250,
+        },
+        table: {
+            backgroundColor: ColorBase.blue12,
+            fontColor: ColorBase.black999,
+        },
+        thead: {
+            backgroundColor: ColorBase.blue250,
+            fontColor: ColorBase.white,
         }
     },
     footer: {
@@ -44,7 +59,6 @@ export const LightThemes = {
         normalFontColor: ColorBase.blue300,
         hoveredBackgroundColor: ColorBase.blue350,
         hoveredFontColor: ColorBase.white,
-        borderColor: ColorBase.blue300,
     }
 }
 
