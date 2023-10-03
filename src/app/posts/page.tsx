@@ -1,10 +1,12 @@
 import React from 'react';
+import PostListContainer from '@/components/post/list/PostListContainer';
+import {getInternalAPIHost} from '@/apis/internal';
 
-const PostListPage: React.FC = () => {
+const PostListPage = async () => {
     return (
-        <div>
-            <h1>포스트 리스트 출력하는 페이지</h1>
-        </div>
+        <>
+            <PostListContainer host={getInternalAPIHost()} />
+        </>
     );
 }
 export default PostListPage;
