@@ -49,6 +49,16 @@ export class BlogPostService extends Service {
                 this.indexes.set(postId, this.posts.length - 1);
             }).catch(() => {}); // 파일을 못불러와도 그냥 패스
         }))
+
+        this.posts.sort((d1, d2) => {
+            if (d1 === d2) {
+                return 0;
+            } else if (d1 > d2) {
+                return -1;
+            } else {
+                return 1;
+            }
+        })
     }
 
     private async init() {
@@ -100,6 +110,7 @@ export class BlogPostService extends Service {
             nextIndex = this.indexes.get(posts.at(-1).id)
             posts.pop();
         }
+
         return {posts, nextIndex};
     }
 }
