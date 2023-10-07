@@ -1,3 +1,6 @@
+import {ResponseInterface} from '@/types/index';
+
+// Base
 export interface BasePostData {
     id: string;
     date: Date;
@@ -13,21 +16,41 @@ export interface PostData extends BasePostData {
     content: string;
 }
 
-export interface PostCategory extends BasePostData {
+export interface PostCategory extends BasePostData {}
 
-}
 
-export interface PostFilter {
-    seriesName?: string;
-}
-
+// pagination
 export interface PostListData {
     posts: PostCategory[];
     nextIndex: number | null;
 }
 
-export interface PostListResponse extends PostListData {
-    count: number;
+
+// Search Filter
+export interface PostFilter {
+    seriesName?: string;
 }
 
 
+// Request
+export interface PostDetailRequest {
+    id: string;
+}
+
+
+// Response
+export interface PostListResponse extends PostListData, ResponseInterface {
+    count: number;
+}
+
+export interface PostDetailResponse extends ResponseInterface {
+    data: PostData;
+}
+
+// Hook
+export interface PostListDataStatus {
+    posts: PostCategory[],
+    nextIndex: number | null,
+    isError: boolean,
+    isLoading: boolean,
+}

@@ -1,8 +1,9 @@
-import {SeriesService} from '@/backend/services/series';
+import {SeriesService} from '@/server/services/series';
 import {NextResponse} from 'next/server';
+import {SeriesPostListRequest} from '@/types/series';
 
 
-export const GET = async (req: Request, { params }: {params: {name: string}}) => {
+export const GET = async (req: Request, { params }: {params: SeriesPostListRequest}) => {
     const { name } = params;
     const queryParams = new URL(req.url).searchParams;
     const startIndex = (queryParams.get('offset') | 0) ?? 0;

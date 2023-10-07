@@ -1,5 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
-import {defaultLayoutPadding, footerPadding} from '@/styles/constants';
+import {DEFAULT_LAYOUT_PADDING, FOOTER_PADDING} from '@/styles/constants';
 
 export const GlobalStyle = createGlobalStyle`
     html {
@@ -94,13 +94,13 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     .default-layout {
-        padding: ${defaultLayoutPadding};
+        padding: ${DEFAULT_LAYOUT_PADDING};
     }
     
     .footer {
         height: 150px;
         background-color: ${(props) => props.theme.footer.backgroundColor};
-        padding: ${footerPadding};
+        padding: ${FOOTER_PADDING};
       
         p {
           color: ${(props) => props.theme.footer.fontColor};

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import TagList from '@/components/common/TagList';
 import Link from 'next/link';
 import {date2String} from '@/utils/date';
+import {STYLE_LINK} from '@/constants/styles';
 
 const PostListCard = ({post}: {post: PostCategory}) => {
     const {tags, title, summary, id, series, date} = post;
@@ -15,10 +16,10 @@ const PostListCard = ({post}: {post: PostCategory}) => {
 
     return (
         <Layout>
-            <Link href={detailURL} style={{textDecoration: 'none'}}>
+            <Link href={detailURL} style={STYLE_LINK}>
                 <h2>{title}</h2>
             </Link>
-            <Link href={seriesURL} style={{textDecoration: 'none'}}>
+            <Link href={seriesURL} style={STYLE_LINK}>
                 <h4 style={{marginTop: '-40px', marginBottom: '-20px'}}>{series}</h4>
             </Link>
             <p>{summary}</p>
