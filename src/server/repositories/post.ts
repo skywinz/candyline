@@ -1,17 +1,16 @@
-import path from 'path';
 import {PostCategory, PostData, PostFilter, PostListData} from '@/types/post';
 import fs from 'fs';
 import matter, {GrayMatterFile} from 'gray-matter';
-import {Repository} from '@/backend/repositories/index';
+import {Repository} from '@/server/repositories/index';
+import {PATH_DIR_POST} from '@/constants/server';
 
 export class PostRepository extends Repository {
     private static instance: PostRepository | null = null;
-    private directoryPath: string = path.join(process.cwd(), '_posts');
-    private posts: PostCategory[];
-    private indexes: Map<string, number>;
+    private posts: PostCategory[] = [];
+    private indexes: Map<string, number> = new Map();
 
     private async getPostDataFromStorage(postId: string): Promise<PostData> {
-        const fullPath = `${this.directoryPath}/${postId}.md`;
+        const fullPath = `${PATH_DIR_POST}/${postId}.md`;
         const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
 
         return {
@@ -27,16 +26,13 @@ export class PostRepository extends Repository {
         }
     }
 
-
     /**
      * 어플리케이션 부팅 및 Service 처음 사용 시
      * 모든 POST 파일들을 읽어 메모리에 저장한다
      * 포스트를 빠른 속도로 불러오기 위한 목적으로 사용되는 함수
      */
     private async collectPostsToMemory(): Promise<void> {
-        this.posts = [];
-        this.indexes = new Map<string, number>();
-        const postFilenames: string[] = fs.readdirSync(this.directoryPath);
+        const postFilenames: string[] = fs.readdirSync(PATH_DIR_POST);
 
         await Promise.all(postFilenames.map(async (filename) => {
             const postId = filename.slice(0, -3);
@@ -76,15 +72,18 @@ export class PostRepository extends Repository {
         if(!this.indexes.has(postId)) {
             return null;
         }
-        let postCategories: PostCategory | undefined | null = this.posts[this.indexes.get(postId)];
 
+        let postCategories: PostCategory | undefined | null = this.posts[this.indexes.get(postId)];
         if (!postCategories) {
             return null;
         }
 
-        const fullPath = `${this.directoryPath}/${postId}.md`;
-        const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
+        const fullPath = `${PATH_DIR_POST}/${postId}.md`;
+        if(!fs.existsSync(fullPath)) {
+            return null;
+        }
 
+        const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
         return {
             ...postCategories,
             content: post.content,
@@ -118,5 +117,4 @@ export class PostRepository extends Repository {
 
         return {posts, nextIndex};
     }
-
 }

@@ -6,7 +6,8 @@ import SeriesCard from '@/components/series/list/SeriesCard';
 
 const SeriesCardGridLayout = ({seriesList}: {seriesList: SeriesData[]}) => {
 
-    const SeriesCardComponents = seriesList.map((series, idx) => <SeriesCard key={idx} name={series.name} summary={series.summary} />);
+    const SeriesCardComponents = seriesList.map((series, idx) =>
+        <SeriesCard key={idx} name={series.name} summary={series.summary} />);
 
     return (
         <Layout>

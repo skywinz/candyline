@@ -1,6 +1,6 @@
-import {Service} from '@/backend/services/index';
+import {Service} from '@/server/services/index';
 import {PostFilter} from '@/types/post';
-import {PostRepository} from '@/backend/repositories/post';
+import {PostRepository} from '@/server/repositories/post';
 
 
 export class BlogPostService extends Service {

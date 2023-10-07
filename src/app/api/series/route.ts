@@ -1,5 +1,5 @@
 import {NextResponse} from 'next/server';
-import {SeriesService} from '@/backend/services/series';
+import {SeriesService} from '@/server/services/series';
 
 
 export const GET = async (req: Request) => {

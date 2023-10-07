@@ -1,8 +1,12 @@
-import {PostFilter, PostListResponse} from '@/types/post';
+import {PostDetailResponse, PostFilter, PostListResponse} from '@/types/post';
 import {ErrorResponse} from '@/types';
-import {postListSize} from '@/constants';
+import {POST_PAGINATION_SIZE} from '@/constants/client';
 
-export const getPostDetail = async (host: string, id: string, componentType): Promise<object> => {
+export const getPostDetail = async (
+    host: string,
+    id: string,
+    componentType
+): Promise<PostDetailResponse | ErrorResponse> => {
     const res = await fetch(`${host}/api/posts/${id}`, {cache: componentType});
     const statusCode = res.status;
 
@@ -19,7 +23,8 @@ export const getPostList = async (
         componentType,
         postFilter: PostFilter = {},
         index: number = 0,
-        pageSize: number = postListSize): Promise<PostListResponse | ErrorResponse> => {
+        pageSize: number = POST_PAGINATION_SIZE
+): Promise<PostListResponse | ErrorResponse> => {
 
     let url = `${host}/api/posts?offset=${index}&size=${pageSize}`;
     Object.keys(postFilter).forEach((filterKey) => {

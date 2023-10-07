@@ -1,10 +1,15 @@
-import {PostData, PostListData} from '@/types/post';
-
+// base
 export interface SeriesData {
     name: string;
     summary: string;
 }
 
-export interface PostListBySeriesResponse extends PostListData{
-    statusCode: number;
+
+// request
+export interface SeriesPostListRequest {
+    name: string;
+}
+
+export interface SeriesDetailRequest {
+    name: string;
 }

@@ -2,11 +2,11 @@
 
 import PostListAboutSeriesItem from '@/components/series/detail/PostListAboutSeriesItem';
 import styled from 'styled-components';
-import {postListSizeBySeriesPage} from '@/constants';
+import {SERIES_POST_PAGINATION_SIZE} from '@/constants/client';
 import usePostPagination from '@/hooks/posts/usePostPagination';
 
 const PostListAboutSeriesContainer = ({seriesName, host}: {seriesName: string, host: string}) => {
-    const postListDataStatus = usePostPagination(host, postListSizeBySeriesPage, {seriesName: seriesName});
+    const postListDataStatus = usePostPagination(host, SERIES_POST_PAGINATION_SIZE, {seriesName: seriesName});
     const PostListItems = postListDataStatus.posts.map((post, idx) =>
         <PostListAboutSeriesItem key={post.id} index={idx + 1} post={post} />);
 

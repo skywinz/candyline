@@ -1,21 +1,16 @@
-import {Repository} from '@/backend/repositories/index';
+import {Repository} from '@/server/repositories/index';
 import {SeriesData} from '@/types/series';
-import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
-import {PostData} from '@/types/post';
+import {PATH_FILE_SERIES} from '@/constants/server';
 
 export class SeriesRepository extends Repository {
     private static instance: SeriesRepository | null = null;
-    private seriesFilePath: string = path.join(process.cwd(), '_series.yml');
-    private series: SeriesData[];
-    private indexes: Map<string, number>;
+    private series: SeriesData[] = [];
+    private indexes: Map<string, number> = new Map();
 
     private async init() {
-        const seriesFileContent = fs.readFileSync(this.seriesFilePath, 'utf-8');
-
-        this.series = [];
-        this.indexes = new Map<string, number>();
+        const seriesFileContent = fs.readFileSync(PATH_FILE_SERIES, 'utf-8');
 
         const rawData = yaml.load(seriesFileContent);
         const rawSeries = rawData.series;

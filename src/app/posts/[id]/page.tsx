@@ -10,8 +10,7 @@ import {getInternalAPIHost} from '@/apis/internal';
 
 const PostDetailPage = async ({params, _}) => {
     const id = params.id;
-    const host = getInternalAPIHost();
-    const {data, statusCode} = await getPostDetail(host, id, CacheForComponentType.SERVER);
+    const {data, statusCode} = await getPostDetail(getInternalAPIHost(), id, CacheForComponentType.SERVER);
 
     if (statusCode === 404) {
         redirect('/404');

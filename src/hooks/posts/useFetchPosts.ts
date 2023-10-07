@@ -1,12 +1,12 @@
 import {PostFilter, PostListDataStatus} from '@/types/post';
 import {useEffect, useState} from 'react';
 import {fetchPostList} from '@/hooks/posts/index';
-import {postListSize} from '@/constants';
+import {POST_PAGINATION_SIZE} from '@/constants/client';
 
 
 const useFetchPosts = (
     host: string,
-    pageSize: number =  postListSize,
+    pageSize: number =  POST_PAGINATION_SIZE,
     filter: PostFilter = {}
 ) => {
     const [postListDataStatus, setPostListDataStatus] = useState<PostListDataStatus>({

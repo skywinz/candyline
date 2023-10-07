@@ -2,12 +2,12 @@ import {PostFilter} from '@/types/post';
 import {useEffect} from 'react';
 import {isWindowBottom} from '@/utils/window';
 import {fetchPostList} from '@/hooks/posts/index';
-import {postListSize} from '@/constants';
+import {POST_PAGINATION_SIZE} from '@/constants/client';
 import useFetchPosts from '@/hooks/posts/useFetchPosts';
 
 const usePostPagination = (
     host: string,
-    pageSize: number = postListSize,
+    pageSize: number = POST_PAGINATION_SIZE,
     filter: PostFilter = {}
 ) => {
     const {postListDataStatus, setPostListDataStatus} = useFetchPosts(host, pageSize, filter);

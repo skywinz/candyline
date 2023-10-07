@@ -1,6 +1,4 @@
-import {PostListBySeriesResponse, SeriesData} from '@/types/series';
-import {postListSizeBySeriesPage} from '@/constants';
-import {ErrorResponse} from '@/types';
+import {SeriesData} from '@/types/series';
 
 export const getSeriesList = async (host: string, componentType): Promise<SeriesData[]> => {
     const res = await fetch(`${host}/api/series`, {cache: componentType});

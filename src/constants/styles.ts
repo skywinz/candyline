@@ -1,0 +1,1 @@
+export const STYLE_LINK = {textDecoration: 'none'}

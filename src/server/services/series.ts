@@ -1,6 +1,6 @@
-import {Service} from '@/backend/services/index';
-import {PostRepository} from '@/backend/repositories/post';
-import {SeriesRepository} from '@/backend/repositories/series';
+import {Service} from '@/server/services/index';
+import {PostRepository} from '@/server/repositories/post';
+import {SeriesRepository} from '@/server/repositories/series';
 import {SeriesData} from '@/types/series';
 import {PostListData} from '@/types/post';
 
