@@ -11,12 +11,15 @@ export const LightThemes = {
         postDetail: {
             titleBackgroundColor: ColorBase.blue350,
             titleFontColor: ColorBase.white,
+            seriesFontColor: ColorBase.black999,
+            hoveredSeriesFontColor: ColorBase.red200,
         },
         postList: {
             postItemBackgroundColor: ColorBase.white,
             postItemHoveredBackgroundColor: ColorBase.blue12,
             postItemTitleColor: ColorBase.blue300,
             postItemSeriesBackgroundColor: ColorBase.blue250,
+            postItemSeriesBackgroundColorHovered: ColorBase.blue350,
             postItemSeriesFontColor: ColorBase.white,
         },
         seriesList: {
