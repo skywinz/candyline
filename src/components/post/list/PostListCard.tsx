@@ -10,6 +10,7 @@ import {date2String} from '@/utils/date';
 const PostListCard = ({post}: {post: PostCategory}) => {
     const {tags, title, summary, id, series, date} = post;
     const detailURL = `/posts/${id}`;
+    const seriesURL = `/series/${series}`;
     const dateString = date2String(new Date(date));
 
     return (
@@ -17,7 +18,9 @@ const PostListCard = ({post}: {post: PostCategory}) => {
             <Link href={detailURL} style={{textDecoration: 'none'}}>
                 <h2>{title}</h2>
             </Link>
-            <h4 style={{marginTop: '-40px', marginBottom: '-20px'}}>{series}</h4>
+            <Link href={seriesURL} style={{textDecoration: 'none'}}>
+                <h4 style={{marginTop: '-40px', marginBottom: '-20px'}}>{series}</h4>
+            </Link>
             <p>{summary}</p>
             <footer>
                 <p>{dateString}</p>
@@ -47,10 +50,12 @@ const Layout = styled.div`
         padding: 5px 20px 5px 20px;
         background-color: ${(props) => props.theme.main.postList.postItemSeriesBackgroundColor};
         color: ${(props) => props.theme.main.postList.postItemSeriesFontColor};
+      
+        &:hover {
+          background-color: ${(props) => props.theme.main.postList.postItemSeriesBackgroundColorHovered};
+        }
     }
-    &:hover {
-        background-color: ${(props) => props.theme.main.postList.postItemHoveredBackgroundColor};
-    }
+
     footer {
         p {
             font-size: 0.8em;
@@ -60,6 +65,10 @@ const Layout = styled.div`
         width: 90%;
         bottom: 0;
         height: 120px;
+    }
+  
+    &:hover {
+      background-color: ${(props) => props.theme.main.postList.postItemHoveredBackgroundColor};
     }
 `;
 
