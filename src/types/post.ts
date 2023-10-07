@@ -18,11 +18,16 @@ export interface PostCategory extends BasePostData {
 }
 
 export interface PostFilter {
-
+    seriesName?: string;
 }
 
-export interface PostListResponse {
+export interface PostListData {
     posts: PostCategory[];
-    count: number;
     nextIndex: number | null;
 }
+
+export interface PostListResponse extends PostListData {
+    count: number;
+}
+
+
