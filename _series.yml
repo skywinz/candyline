@@ -1,0 +1,7 @@
+series:
+  kramdownTest:
+    name: kramdown-test
+    summary: '마크다운 테스트를 하는 곳이에요'
+  helloWorld:
+    name: hello-world
+    summary: '헬로 월드!'
