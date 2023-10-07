@@ -30,4 +30,10 @@ export interface PostListResponse extends PostListData {
     count: number;
 }
 
+export interface PostListDataStatus {
+    posts: PostCategory[],
+    nextIndex: number | null,
+    isError: boolean,
+    isLoading: boolean,
+}
 

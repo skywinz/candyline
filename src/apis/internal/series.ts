@@ -22,18 +22,3 @@ export const getSeries = async (host: string, name: string, componentType): Prom
         return null;
     }
 }
-
-
-export const getPostsBySeriesName = async (host: string, name: string, index: number, componentType): Promise<PostListBySeriesResponse | ErrorResponse> => {
-    const res = await fetch(`${host}/api/series/${name}/posts?offset=${index}&size=${postListSizeBySeriesPage}`, {cache: componentType});
-    if (res.ok) {
-        const data = await res.json();
-        return {
-            statusCode: 200,
-            ...data,
-        }
-    } else {
-        const statusCode = res.status ?? 500;
-        return { statusCode }
-    }
-}
