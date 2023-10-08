@@ -4,7 +4,6 @@ import {DEFAULT_LAYOUT_PADDING, FOOTER_PADDING} from '@/styles/constants';
 export const GlobalStyle = createGlobalStyle`
     html {
         font-family: 'Hahmlet', serif;
-        font-size: 1.2em;
         font-weight: 300;
     }
     
@@ -22,7 +21,23 @@ export const GlobalStyle = createGlobalStyle`
         border-left: 10px solid ${(props) => props.theme.markdown.h1.borderLineColor};
         padding-left: 10px;
         padding-bottom: 10px;
+        font-size: 1.7em;
     }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+    h4 {
+        font-size: 1em;
+    }
+    h5 {
+        font-size: 1em;
+    }
+    
+    
     
     code {
         font-family: 'Nanum Gothic Coding', cursive;

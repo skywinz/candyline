@@ -35,6 +35,7 @@ const Layout = styled.div`
     height: 60px;
     padding: ${NAVBAR_PADDING};
     box-shadow: 0 1px 15px gray;
+    font-size: 1.2em;
 `;
 
 const CategoryContainer = styled.div`

@@ -3,9 +3,9 @@
 
 const dpc = {
     top: '10px',
-    right: '200px',
+    right: '600px',
     bottom: '100px',
-    left: '200px',
+    left: '600px',
 }
 
 

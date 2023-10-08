@@ -26,6 +26,9 @@ const ColorBase = {
     red200: '#ec4f6e',
     red250: '#e83658',
     red300: '#DC143C',
+
+    yellow50: '#fffcdc',
+    yellow100: '#fffbb7',
 }
 
 export default ColorBase;
