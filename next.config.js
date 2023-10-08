@@ -7,5 +7,8 @@ module.exports ={
     },
     compiler: {
         styledComponents: true,
+    },
+    compilerOptions: {
+        useUnknownInCatchVariables: false,
     }
 };

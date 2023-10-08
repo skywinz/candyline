@@ -13,7 +13,7 @@ export interface BasePostData {
 }
 
 export interface PostData extends BasePostData {
-    content: string;
+    content?: string;
 }
 
 export interface PostCategory extends BasePostData {}

@@ -5,7 +5,7 @@ import {PostRepository} from '@/server/repositories/post';
 
 export class BlogPostService extends Service {
     private static instance: BlogPostService | null = null;
-    private repository: PostRepository;
+    private repository: PostRepository | null = null;
 
 
     private async init() {
@@ -21,10 +21,10 @@ export class BlogPostService extends Service {
     }
 
     public getDetail(postId: string) {
-        return this.repository.getDetail(postId);
+        return this.repository?.getDetail(postId);
     }
 
     public getList(startIndex: number = 0, pageSize: number = 10, filter: PostFilter = {}) {
-        return this.repository.getList(startIndex, pageSize, filter);
+        return this.repository?.getList(startIndex, pageSize, filter);
     }
 }

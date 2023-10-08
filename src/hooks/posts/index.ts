@@ -1,10 +1,9 @@
 import {PostFilter, PostListDataStatus} from '@/types/post';
 import {getPostList} from '@/apis/internal/post';
-import {CacheForComponentType} from '@/types/api';
 
 export const fetchPostList = async (
     postListDataStatus: PostListDataStatus,
-    setPostListDataStatus,
+    setPostListDataStatus: any,
     host: string,
     filter: PostFilter
 ) => {
@@ -14,7 +13,7 @@ export const fetchPostList = async (
     postListDataStatus.isLoading = true;
     const result: PostListDataStatus = await getPostList(
         host,
-        CacheForComponentType.SERVER,
+        'no-cache',
         filter,
         postListDataStatus.nextIndex,
     ).then((res) => {

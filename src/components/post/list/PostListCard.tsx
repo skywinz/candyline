@@ -25,8 +25,8 @@ const PostListCard = ({post}: {post: PostCategory}) => {
             <p>{summary}</p>
             <footer>
                 <p>{dateString}</p>
-                <hr />
-                <TagList style={{marginTop: '10px'}} tags={tags} />
+                <hr style={{marginBottom: '10px'}} />
+                <TagList tags={tags} />
             </footer>
         </Layout>
     );
