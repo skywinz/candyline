@@ -12,7 +12,6 @@ export default function RootLayout({children}: {
     children: React.ReactNode;
 }) {
     return (
-
         <html lang='kr'>
             <head>
                 <title>SkyWINZ Devlog</title>
@@ -20,6 +19,7 @@ export default function RootLayout({children}: {
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Hahmlet:wght@100;200;300;400;500;600;700;800;900&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
+                <link rel="icon" href="/src/app/favicon.ico" sizes="any" />
             </head>
             <body>
                 <ThemeProvider theme={LightThemes}>
