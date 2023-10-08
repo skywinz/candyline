@@ -1,16 +1,18 @@
-
 import {redirect} from 'next/navigation';
 import PostContentContainer from '@/components/post/detail/PostContentContainer';
 import PostTitleContainer from '@/components/post/detail/PostTitleContainer';
 import TagList from '@/components/common/TagList';
 import {getPostDetail} from '@/apis/internal/post';
-import {CacheForComponentType} from '@/types/api';
 import {getInternalAPIHost} from '@/apis/internal';
 
+interface PostDetailPageArgs {
+    id: string;
+}
 
-const PostDetailPage = async ({params, _}) => {
-    const id = params.id;
-    const {data, statusCode} = await getPostDetail(getInternalAPIHost(), id, CacheForComponentType.SERVER);
+
+const PostDetailPage = async ({ params }: {params: PostDetailPageArgs}) => {
+    const { id } = params;
+    const {data, statusCode} = await getPostDetail(getInternalAPIHost(), id, 'no-cache');
 
     if (statusCode === 404) {
         redirect('/404');

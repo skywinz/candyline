@@ -4,7 +4,7 @@ import {SeriesData} from '@/types/series';
 import React from 'react';
 import styled from 'styled-components';
 
-const SeriesDetailContainer: React.FC = (series: SeriesData) => {
+const SeriesDetailContainer = (series: SeriesData) => {
 
     return (
         <Layout>

@@ -8,7 +8,7 @@ interface PostContentContainerParams {
     content: string;
 }
 
-const PostContentContainer: React.FC = (params: PostContentContainerParams) => {
+const PostContentContainer = (params: PostContentContainerParams) => {
     const htmlContent = marked(params.content);
     return (
         <>

@@ -9,11 +9,11 @@ export class SeriesRepository extends Repository {
     private series: SeriesData[] = [];
     private indexes: Map<string, number> = new Map();
 
-    private async init() {
+    protected async init() {
         const seriesFileContent = fs.readFileSync(PATH_FILE_SERIES, 'utf-8');
 
-        const rawData = yaml.load(seriesFileContent);
-        const rawSeries = rawData.series;
+        const rawData: any = yaml.load(seriesFileContent);
+        const rawSeries: SeriesData[] = rawData.series;
 
         for (const [_, data] of Object.entries(rawSeries)) {
             const {name, summary} = data;

@@ -6,8 +6,8 @@ import {SeriesPostListRequest} from '@/types/series';
 export const GET = async (req: Request, { params }: {params: SeriesPostListRequest}) => {
     const { name } = params;
     const queryParams = new URL(req.url).searchParams;
-    const startIndex = (queryParams.get('offset') | 0) ?? 0;
-    const pageSize = (queryParams.get('size') | 0) ?? 50;
+    const startIndex = parseInt(queryParams.get('offset') ?? '0');
+    const pageSize = parseInt(queryParams.get('size') ?? '10');
 
     const service = await SeriesService.getInstance();
     const posts = service.getPostsFromSeries(name, startIndex, pageSize);

@@ -5,9 +5,9 @@ import {POST_PAGINATION_SIZE} from '@/constants/client';
 export const getPostDetail = async (
     host: string,
     id: string,
-    componentType
-): Promise<PostDetailResponse | ErrorResponse> => {
-    const res = await fetch(`${host}/api/posts/${id}`, {cache: componentType});
+    cache: RequestCache,
+) => {
+    const res = await fetch(`${host}/api/posts/${id}`, { cache });
     const statusCode = res.status;
 
     if (res.ok) {
@@ -20,11 +20,11 @@ export const getPostDetail = async (
 
 export const getPostList = async (
         host: string,
-        componentType,
+        cache: RequestCache,
         postFilter: PostFilter = {},
         index: number = 0,
         pageSize: number = POST_PAGINATION_SIZE
-): Promise<PostListResponse | ErrorResponse> => {
+) => {
 
     let url = `${host}/api/posts?offset=${index}&size=${pageSize}`;
     Object.keys(postFilter).forEach((filterKey) => {
@@ -33,7 +33,7 @@ export const getPostList = async (
         }
     });
 
-    const res = await fetch(url, {cache: componentType});
+    const res = await fetch(url, { cache });
     if (res.ok) {
         const data = await res.json();
         return {
