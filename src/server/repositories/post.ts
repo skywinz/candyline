@@ -41,11 +41,12 @@ export class PostRepository extends Repository {
             ).then((postData) => {
                 delete postData.content;
                 this.posts.push(postData);
-                this.indexes.set(postId, this.posts.length - 1);
             }).catch(() => {}); // 파일을 못불러와도 그냥 패스
         }))
 
-        this.posts.sort((d1, d2) => {
+        this.posts.sort((c1, c2) => {
+            let d1 = c1.date;
+            let d2 = c2.date;
             if (d1 === d2) {
                 return 0;
             } else if (d1 > d2) {
@@ -53,7 +54,10 @@ export class PostRepository extends Repository {
             } else {
                 return 1;
             }
-        })
+        });
+        this.posts.forEach((post, index) => {
+            this.indexes.set(post.id, index);
+        });
     }
 
     protected async init() {

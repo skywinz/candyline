@@ -10,22 +10,13 @@ const PostListAboutSeriesContainer = ({seriesName, host}: {seriesName: string, h
     const PostListItems = postListDataStatus.posts.map((post, idx) =>
         <PostListAboutSeriesItem key={post.id} index={idx + 1} post={post} />);
 
+
     return (
         <Layout>
-            <table>
-                <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>날짜</th>
-                </tr>
-                </thead>
-                <tbody>
+            <ul>
                 {PostListItems}
-                </tbody>
-            </table>
+            </ul>
         </Layout>
-
     );
 }
 

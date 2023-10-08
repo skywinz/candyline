@@ -15,17 +15,25 @@ export const LightThemes = {
             hoveredSeriesFontColor: ColorBase.red200,
         },
         postList: {
+            postListItemSummaryFontColor: ColorBase.gray150,
+            postItemBorderColor: ColorBase.red150,
             postItemBackgroundColor: ColorBase.white,
-            postItemHoveredBackgroundColor: ColorBase.blue12,
             postItemTitleColor: ColorBase.blue300,
-            postItemSeriesBackgroundColor: ColorBase.blue250,
-            postItemSeriesBackgroundColorHovered: ColorBase.blue350,
-            postItemSeriesFontColor: ColorBase.white,
+            postItemTitleHoveredColor: ColorBase.red250,
+            postItemSeriesFontColor: ColorBase.black999,
+            postItemSeriesFontColorHovered: ColorBase.red250,
+            postItemShadowColorHovered: ColorBase.red50,
         },
         seriesList: {
+            itemBorderColor: ColorBase.red150,
             itemBackgroundColor: ColorBase.white,
-            hoveredItemBackgroundColor: ColorBase.blue12,
             itemTitleColor: ColorBase.blue300,
+            itemTitleColorHovered: ColorBase.red250,
+            itemShadowColorHovered: ColorBase.red50,
+        },
+        seriesDetail: {
+            postItemBackgroundColor: ColorBase.white,
+            postItemBackgroundColorHovered: ColorBase.red25,
         }
     },
     markdown: {
