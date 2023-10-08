@@ -13,15 +13,37 @@ const PostListAboutSeriesItem = ({post, index}: {post: PostCategory, index: numb
 
     return (
         <Layout>
-            <td>{index}</td>
-            <td><Link href={postUrl}>{title}</Link></td>
-            <td>{dateString}</td>
+            <p className='index'>{index}</p>
+            <p className='title'><Link href={postUrl}>{title}</Link></p>
+            <p className='date'>{dateString}</p>
         </Layout>
     );
 }
 
-
-const Layout = styled.tr`
+const Layout = styled.li`
+    width: 100%;
+    display: flex;
+    background-color: ${(props) => props.theme.main.seriesDetail.postItemBackgroundColor};
+    transition: background-color 0.2s;
+    padding: 2px 0 2px 0;
+    
+    &:hover {
+        background-color: ${(props) => props.theme.main.seriesDetail.postItemBackgroundColorHovered};
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .index {
+        flex: 1;
+    }
+    .title {
+        flex: 7;
+    }
+    .date {
+        flex: 2;
+    }
 `;
 
 export default PostListAboutSeriesItem;

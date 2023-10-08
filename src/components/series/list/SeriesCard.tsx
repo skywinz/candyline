@@ -17,20 +17,27 @@ const SeriesCard = (data: SeriesData) => {
 }
 
 const Layout = styled.div`
-    padding-top: 30px;
-    padding-bottom: 30px;
-    height: 400px;
+    border-top: 8px solid ${(props) => props.theme.main.seriesList.itemBorderColor};
+    padding: 30px 20px 30px 20px;
+    height: auto;
     display: initial;
     text-align: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
     background-color: ${(props) => props.theme.main.seriesList.itemBackgroundColor};
-    transition: background-color 0.2s;
-  
+    transition: box-shadow 0.2s;
+    
     &:hover {
-        background-color: ${(props) => props.theme.main.seriesList.hoveredItemBackgroundColor};
+        box-shadow: ${(props) => props.theme.main.seriesList.itemShadowColorHovered} 0 2px 8px 0;
     }
+  
     h2 {
+        font-weight: 400;
+        margin-top: 0;
         color: ${(props) => props.theme.main.seriesList.itemTitleColor};
+        transition: color 0.2s;
+        &:hover {
+            color: ${(props) => props.theme.main.seriesList.itemTitleColorHovered};
+        }
     }
 `;
 export default SeriesCard;

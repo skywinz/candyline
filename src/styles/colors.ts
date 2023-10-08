@@ -20,6 +20,7 @@ const ColorBase = {
     blue12: '#dfebf6',
     blue50HalfOpacity: 'rgba(121,206,240,0.59)',
 
+    red25: '#ffdbe0',
     red50: '#f5b2bd',
     red100: '#f18b9c',
     red150: '#ee6e85',

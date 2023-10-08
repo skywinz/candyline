@@ -25,9 +25,15 @@ export const LightThemes = {
             postItemShadowColorHovered: ColorBase.red50,
         },
         seriesList: {
+            itemBorderColor: ColorBase.red150,
             itemBackgroundColor: ColorBase.white,
-            hoveredItemBackgroundColor: ColorBase.blue12,
             itemTitleColor: ColorBase.blue300,
+            itemTitleColorHovered: ColorBase.red250,
+            itemShadowColorHovered: ColorBase.red50,
+        },
+        seriesDetail: {
+            postItemBackgroundColor: ColorBase.white,
+            postItemBackgroundColorHovered: ColorBase.red25,
         }
     },
     markdown: {
