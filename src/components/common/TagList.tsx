@@ -8,7 +8,7 @@ interface TagListParams {
     tags: string[];
 }
 
-const TagList: React.FC = (param: TagListParams) => {
+const TagList = (param: TagListParams) => {
 
     const extendedTagStyle = {
         marginRight: '10px',

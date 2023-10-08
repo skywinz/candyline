@@ -1,14 +1,17 @@
 import {getSeries} from '@/apis/internal/series';
 import {getInternalAPIHost} from '@/apis/internal';
-import {CacheForComponentType} from '@/types/api';
 import {redirect} from 'next/navigation';
 import SeriesDetailContainer from '@/components/series/detail/SeriesDetailContainer';
 import PostListAboutSeriesContainer from '@/components/series/detail/PostListAboutSeriesContainer';
 
-const SeriesDetailPage = async ({params, _}) => {
-    const name = params.name;
+interface SeriesDetailPageArgs {
+    name: string;
+}
+
+const SeriesDetailPage = async ({params}: {params: SeriesDetailPageArgs}) => {
+    const { name } = params;
     const host = getInternalAPIHost();
-    const series = await getSeries(host, name, CacheForComponentType.SERVER);
+    const series = await getSeries(host, name, 'no-cache');
 
     if (series === null) {
         redirect('/404');

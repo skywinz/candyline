@@ -56,7 +56,7 @@ export class PostRepository extends Repository {
         })
     }
 
-    private async init() {
+    protected async init() {
         await this.collectPostsToMemory();
     }
 
@@ -69,14 +69,12 @@ export class PostRepository extends Repository {
     }
 
     public getDetail(postId: string): PostData | null {
-        if(!this.indexes.has(postId)) {
+        const key = this.indexes.get(postId);
+        if (!key) {
             return null;
         }
 
-        let postCategories: PostCategory | undefined | null = this.posts[this.indexes.get(postId)];
-        if (!postCategories) {
-            return null;
-        }
+        let postCategories: PostCategory = this.posts[key];
 
         const fullPath = `${PATH_DIR_POST}/${postId}.md`;
         if(!fs.existsSync(fullPath)) {
@@ -93,6 +91,7 @@ export class PostRepository extends Repository {
     public getList(startIndex: number = 0, pageSize: number = 10, filter: PostFilter = {}): PostListData {
         let cnt = 0;
         const posts: PostCategory[] = [];
+        let nextIndex = null;
 
         for (let i = startIndex; i < this.posts.length; i++) {
             const postCategory = this.posts[i];
@@ -109,12 +108,13 @@ export class PostRepository extends Repository {
             cnt++;
         }
 
-        let nextIndex = null;
         if (cnt == pageSize + 1) {
-            nextIndex = this.indexes.get(posts.at(-1).id)
-            posts.pop();
+            const lastPost = posts.at(-1);
+            if(lastPost) {
+                nextIndex = this.indexes.get(lastPost.id) ?? null;
+                posts.pop();
+            }
         }
-
         return {posts, nextIndex};
     }
 }
