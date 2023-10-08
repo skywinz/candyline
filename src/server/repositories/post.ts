@@ -69,11 +69,10 @@ export class PostRepository extends Repository {
     }
 
     public getDetail(postId: string): PostData | null {
-        const key = this.indexes.get(postId);
-        if (!key) {
+        const key: number | undefined = this.indexes.get(postId);
+        if (key === undefined) {
             return null;
         }
-
         let postCategories: PostCategory = this.posts[key];
 
         const fullPath = `${PATH_DIR_POST}/${postId}.md`;
