@@ -3,6 +3,7 @@ import PostContentContainer from '@/components/post/detail/PostContentContainer'
 import PostTitleContainer from '@/components/post/detail/PostTitleContainer';
 import {getPostDetail} from '@/apis/internal/post';
 import {getInternalAPIHost} from '@/apis/internal';
+import Utterances from '@/components/common/Utterances';
 
 interface PostDetailPageArgs {
     id: string;
@@ -23,6 +24,7 @@ const PostDetailPage = async ({ params }: {params: PostDetailPageArgs}) => {
         <>
             <PostTitleContainer title={data.title} date={new Date(data.date)} series={data.series} tags={data.tags} />
             <PostContentContainer content={data.content} />
+            <Utterances />
         </>
     );
 }
