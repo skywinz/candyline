@@ -8,10 +8,10 @@ export const GET = async (req: Request) => {
     const startIndex = parseInt(queryParams.get('offset') ?? '0');
     const pageSize = parseInt(queryParams.get('size') ?? '10');
 
-    let filter: PostFilter = {}
-    queryParams.forEach((value, name) => {
-        if (name !== 'offset' && name !== 'size') {
-            filter = Object.assign(filter, {name: value});
+    const filter: PostFilter = {}
+    queryParams.forEach((value: string, key: string) => {
+        if (key === 'seriesName') {
+            filter.seriesName = value;
         }
     });
 

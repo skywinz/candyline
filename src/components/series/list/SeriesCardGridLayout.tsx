@@ -20,8 +20,8 @@ const Layout = styled.div`
     margin-top: 100px;
     margin-bottom: 100px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 100px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
 `;
 
 export default SeriesCardGridLayout;

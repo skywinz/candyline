@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {NAVBAR_PADDING} from '@/styles/constants';
+import {LENGTH_FHD, LENGTH_MOBILE, NAVBAR_PADDING} from '@/styles/constants';
 import Link from 'next/link';
 import {STYLE_LINK} from '@/constants/styles';
 
@@ -33,8 +33,16 @@ const Layout = styled.div`
     background-color: ${(props) => props.theme.main.navbar.backgroundColor};
     border-bottom: 2px solid ${(props) => props.theme.main.navbar.borderBottomColor};
     height: 60px;
-    padding: ${NAVBAR_PADDING};
+    padding: ${NAVBAR_PADDING.OVER_QHD};
     box-shadow: 0 1px 15px gray;
+    font-size: 1.2em;
+  
+    @media (max-width: ${LENGTH_FHD}px) {
+        padding: ${NAVBAR_PADDING.FHD};
+    }
+    @media (max-width: ${LENGTH_MOBILE}px) {
+        padding: ${NAVBAR_PADDING.MOBILE};
+    }
 `;
 
 const CategoryContainer = styled.div`

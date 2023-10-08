@@ -1,10 +1,9 @@
 import {createGlobalStyle} from 'styled-components';
-import {DEFAULT_LAYOUT_PADDING, FOOTER_PADDING} from '@/styles/constants';
+import {DEFAULT_PADDING, FOOTER_PADDING, LENGTH_FHD, LENGTH_MOBILE} from '@/styles/constants';
 
 export const GlobalStyle = createGlobalStyle`
     html {
         font-family: 'Hahmlet', serif;
-        font-size: 1.2em;
         font-weight: 300;
     }
     
@@ -22,7 +21,23 @@ export const GlobalStyle = createGlobalStyle`
         border-left: 10px solid ${(props) => props.theme.markdown.h1.borderLineColor};
         padding-left: 10px;
         padding-bottom: 10px;
+        font-size: 1.7em;
     }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+    h4 {
+        font-size: 1em;
+    }
+    h5 {
+        font-size: 1em;
+    }
+    
+    
     
     code {
         font-family: 'Nanum Gothic Coding', cursive;
@@ -94,18 +109,36 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     .default-layout {
-        padding: ${DEFAULT_LAYOUT_PADDING};
+        padding: ${DEFAULT_PADDING.OVER_QHD};
     }
-    
     .footer {
         height: 150px;
         background-color: ${(props) => props.theme.footer.backgroundColor};
-        padding: ${FOOTER_PADDING};
-      
+        padding: ${FOOTER_PADDING.OVER_QHD};
+
         p {
           color: ${(props) => props.theme.footer.fontColor};
           font-size: 0.7em;
           text-decoration: none;
         }
     }
+    
+    @media (max-width: ${LENGTH_FHD}px) {
+        .default-layout {
+            padding: ${DEFAULT_PADDING.FHD};
+        }
+        .footer {
+            padding: ${FOOTER_PADDING.FHD};
+        }
+    }
+    @media (max-width: ${LENGTH_MOBILE}px) {
+        .default-layout {
+            padding: ${DEFAULT_PADDING.MOBILE};
+        }
+        .footer {
+            padding: ${FOOTER_PADDING.MOBILE};
+        }
+    }
+    
+
 `;
