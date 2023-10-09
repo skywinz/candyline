@@ -14,7 +14,6 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     h1 {
-        width: 100%;
         background-color: ${(props) => props.theme.markdown.h1.backgroundColor};
         color: ${(props) => props.theme.markdown.h1.fontColor};
         border-bottom: 1px solid ${(props) => props.theme.markdown.h1.borderLineColor};

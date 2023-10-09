@@ -8,7 +8,7 @@ const SeriesListPage = async () => {
 
     return (
         <>
-            <h1>Series</h1>
+            <h1 style={{ marginTop: '70px', marginBottom: '-60px' }}>Series</h1>
             <div>
                 <SeriesCardGridLayout seriesList={seriesList} />
             </div>

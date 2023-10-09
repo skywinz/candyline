@@ -14,7 +14,7 @@ const TagList = (param: TagListParams) => {
         marginRight: '10px',
     }
     const TagListComponent = param.tags.map(
-        (tag, idx) => <Tag key={idx} style={extendedTagStyle}>{tag}</Tag>
+        (tag, idx) => <Tag key={idx} name={tag} style={extendedTagStyle} />
     );
 
     return (

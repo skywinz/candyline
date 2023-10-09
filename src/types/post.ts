@@ -29,6 +29,7 @@ export interface PostListData {
 // Search Filter
 export interface PostFilter {
     seriesName?: string;
+    tags?: string[];
 }
 
 
