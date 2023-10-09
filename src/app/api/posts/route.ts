@@ -13,6 +13,9 @@ export const GET = async (req: Request) => {
         if (key === 'seriesName') {
             filter.seriesName = value;
         }
+        if (key === 'tags') {
+            filter.tags = value.split(',');
+        }
     });
 
     const service = await BlogPostService.getInstance();

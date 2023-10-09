@@ -3,6 +3,7 @@ import fs from 'fs';
 import matter, {GrayMatterFile} from 'gray-matter';
 import {Repository} from '@/server/repositories/index';
 import {PATH_DIR_POST} from '@/constants/server';
+import {SetFunc} from '@/utils/data';
 
 export class PostRepository extends Repository {
     private static instance: PostRepository | null = null;
@@ -95,6 +96,11 @@ export class PostRepository extends Repository {
         let cnt = 0;
         const posts: PostCategory[] = [];
         let nextIndex = null;
+        let tagSet: Set<string> | null = null;
+
+        if (filter.tags !== undefined) {
+            tagSet = new Set(filter.tags);
+        }
 
         for (let i = startIndex; i < this.posts.length; i++) {
             const postCategory = this.posts[i];
@@ -105,6 +111,12 @@ export class PostRepository extends Repository {
             // Filtering (Exclude) Section
             if (filter.seriesName !== undefined && postCategory.series !== filter.seriesName) {
                 continue;
+            }
+            if (tagSet) {
+                const postTagSet = new Set<string>(postCategory.tags);
+                if (!SetFunc.isSubset<string>(postTagSet, tagSet)) {
+                    continue;
+                }
             }
 
             posts.push(postCategory);

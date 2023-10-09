@@ -34,6 +34,11 @@ export const LightThemes = {
         seriesDetail: {
             postItemBackgroundColor: ColorBase.white,
             postItemBackgroundColorHovered: ColorBase.red25,
+        },
+        tagDetail: {
+            headerTitleBackgroundColor: ColorBase.blue300,
+            headerTitleFontColor: ColorBase.white,
+            headerTagnameFontColor: ColorBase.blue300,
         }
     },
     markdown: {
