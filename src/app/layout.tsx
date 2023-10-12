@@ -5,8 +5,9 @@ import React from 'react';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import {GlobalStyle} from '@/styles/globals';
-import {ThemeProvider} from 'styled-components';
+import styled, {ThemeProvider} from 'styled-components';
 import {LightThemes} from '@/styles/themes';
+import Sidebar from '@/components/common/Sidebar';
 
 export default function RootLayout({children}: {
     children: React.ReactNode;

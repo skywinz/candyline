@@ -1,22 +1,21 @@
+'use client';
+
 import styled from 'styled-components';
 import {LENGTH_FHD, LENGTH_MOBILE, NAVBAR_PADDING} from '@/styles/constants';
 import Link from 'next/link';
 import {STYLE_LINK} from '@/constants/styles';
+import Sidebar from '@/components/common/Sidebar';
+import {useState} from 'react';
 
 const Navbar = () => {
+    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
     return (
         <Layout>
-            <CategoryContainer>
-                <Link href='/' style={STYLE_LINK}>
-                    <Category>HOME</Category>
-                </Link>
-                <Link href='/posts' style={STYLE_LINK}>
-                    <Category>POSTS</Category>
-                </Link>
-                <Link href='/series' style={STYLE_LINK}>
-                    <Category>SERIES</Category>
-                </Link>
-            </CategoryContainer>
+            <NavbarLayout>
+                <Category onClick={() => setIsSidebarVisible(!isSidebarVisible)}>SkyWINZ</Category>
+            </NavbarLayout>
+            <Sidebar isVisible={isSidebarVisible} />
         </Layout>
     );
 }
@@ -24,6 +23,10 @@ const Navbar = () => {
 export default Navbar;
 
 const Layout = styled.div`
+    
+`;
+
+const NavbarLayout = styled.div`
     z-index: 9999;
     position: fixed;
     top: 0;
@@ -45,23 +48,17 @@ const Layout = styled.div`
     }
 `;
 
-const CategoryContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    
+
+const Category = styled.p` 
     font-family: 'Do Hyeon', sans-serif;
     font-size: 1.05em;
-`;
-
-const Category = styled.p`
-      cursor: pointer;
-      transition: color 0.3s;
-      text-align: center;
-      text-decoration-line: none;
-      color: ${(props) => props.theme.main.navbar.fontColor};
+    cursor: pointer;  
+    transition: color 0.2s; 
+    text-align: center; 
+    text-decoration-line: none; 
+    color: ${(props) => props.theme.main.navbar.fontColor};
     
-      &:hover {
-          color: ${(props) => props.theme.main.navbar.itemColorHovered};
-      }
+    &:hover {
+        color: ${(props) => props.theme.main.navbar.itemColorHovered};
+    }
 `;
