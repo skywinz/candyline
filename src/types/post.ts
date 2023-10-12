@@ -30,6 +30,7 @@ export interface PostListData {
 export interface PostFilter {
     seriesName?: string;
     tags?: string[];
+    word?: string;
 }
 
 

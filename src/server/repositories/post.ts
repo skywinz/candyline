@@ -118,6 +118,13 @@ export class PostRepository extends Repository {
                     continue;
                 }
             }
+            if (filter.word) {
+                const lowerTitle = postCategory.title.toLowerCase();
+                const lowerWord = filter.word.toLowerCase();
+                if (!lowerTitle.includes(lowerWord)) {
+                    continue;
+                }
+            }
 
             posts.push(postCategory);
             cnt++;

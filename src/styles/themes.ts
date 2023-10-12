@@ -8,6 +8,14 @@ export const LightThemes = {
             borderBottomColor: ColorBase.blue300,
             itemColorHovered: ColorBase.blue150,
         },
+        sidebar: {
+            backgroundColor: ColorBase.white,
+            borderColor: ColorBase.blue250,
+            itemColor: ColorBase.black999,
+            hoveredItemColor: ColorBase.red200,
+            buttonBackgroundColor: ColorBase.blue250,
+            buttonFontColor: ColorBase.white,
+        },
         postDetail: {
             titleBackgroundColor: ColorBase.blue350,
             titleFontColor: ColorBase.white,
