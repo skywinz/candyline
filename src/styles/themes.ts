@@ -153,7 +153,7 @@ export const DarkThemes = {
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray25,
-            postItemBorderColor: ColorBase.blue50,
+            postItemBorderColor: ColorBase.yellow100,
             postItemBackgroundColor: ColorBase.black25,
             postItemTitleColor: ColorBase.yellow150,
             postItemTitleHoveredColor: ColorBase.red250,
