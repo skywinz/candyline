@@ -36,9 +36,6 @@ const App = ({ children }: {children: React.ReactNode}) => {
                     {children}
                 </div>
                 <Footer />
-                <ThemeSelectorButtonLayout>
-                    <ThemeSelector />
-                </ThemeSelectorButtonLayout>
             </>
         </ThemeProvider>
     );
@@ -65,22 +62,3 @@ export default function RootLayout({children}: {
         </html>
     )
 };
-
-const ThemeSelectorButtonLayout = styled.div`
-    display: flex;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 10001;
-    margin: ${NAVBAR_PADDING.OVER_QHD};
-    margin-top: -4px;
-  
-    @media (max-width: ${LENGTH_FHD}px) {
-        margin: ${NAVBAR_PADDING.FHD};
-        margin-top: -4px;
-    }
-    @media (max-width: ${LENGTH_MOBILE}px) {
-        margin: ${NAVBAR_PADDING.MOBILE};
-        margin-top: -4px;
-    }
-`;

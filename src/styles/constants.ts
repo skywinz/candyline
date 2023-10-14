@@ -49,3 +49,5 @@ export const FOOTER_PADDING = {
     FHD: `20px ${DPC.FHD.right} 0 ${DPC.FHD.left}`,
     MOBILE: `20px ${DPC.MOBILE.right} 0 ${DPC.MOBILE.left}`,
 }
+
+export const SIDEBAR_MOVE_TIME = 0.8;
