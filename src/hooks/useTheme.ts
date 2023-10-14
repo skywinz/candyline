@@ -10,17 +10,13 @@ const useTheme = () => {
         themeStyle: theme,
         theme: theme === LightThemes ? 'light' : 'dark',
         setTheme: (themeType: string) => {
-            if (themeType === 'light') {
-                setRawTheme(LightThemes);
-            } else if(themeType === 'dark') {
+            if (themeType === 'dark') {
                 setRawTheme(DarkThemes);
             } else {
                 setRawTheme(LightThemes);
             }
         }
     }
-
-    // return {theme, setTheme};
 }
 
 export default useTheme;

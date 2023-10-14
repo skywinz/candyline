@@ -2,8 +2,6 @@
 
 import styled from 'styled-components';
 import Link from 'next/link';
-import useTheme from '@/hooks/useTheme';
-import {DarkThemes, LightThemes} from '@/styles/themes';
 
 interface SidebarArgs {
     isVisible: boolean;
@@ -12,7 +10,6 @@ interface SidebarArgs {
 
 const Sidebar = ({isVisible}: SidebarArgs) => {
     let searchWord = '';
-    const {theme, setTheme} = useTheme();
 
     const searchButtonHandler = () => {
         const postUrl = `/posts?word=${searchWord}`;
