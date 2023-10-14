@@ -24,7 +24,7 @@ const Layout = styled.div`
     text-align: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
     background-color: ${(props) => props.theme.main.seriesList.itemBackgroundColor};
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, background-color 0.5s ease, color 0.5s ease;
     
     &:hover {
         box-shadow: ${(props) => props.theme.main.seriesList.itemShadowColorHovered} 0 2px 8px 0;

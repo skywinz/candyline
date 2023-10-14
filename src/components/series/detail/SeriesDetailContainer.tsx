@@ -8,7 +8,7 @@ const SeriesDetailContainer = (series: SeriesData) => {
 
     return (
         <Layout>
-            <h2>{series.name}</h2>
+            <h2>Series: {series.name}</h2>
             <p>{series.summary}</p>
             <hr />
         </Layout>
@@ -20,6 +20,7 @@ const Layout = styled.div`
     margin-bottom: 20px;
   
     h2 {
+      font-weight: 400;
       font-size: 2.2em;
     }
     hr {

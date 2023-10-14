@@ -14,6 +14,8 @@
     "@types/node": "20.6.4",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
+    "@types/react-icons": "^3.0.0",
+    "@types/recoil": "^0.0.9",
     "@types/sass": "^1.45.0",
     "@types/styled-components": "^5.1.28",
     "eslint": "8.50.0",
@@ -23,14 +25,16 @@
     "js-yaml": "^4.1.0",
     "marked": "^9.0.3",
     "next": "13.5.2",
-    "next-mdx-remote": "^4.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.11.0",
+    "recoil": "^0.7.7",
     "sass": "^1.68.0",
     "styled-components": "^6.0.8",
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4",
     "node-sass": "^9.0.0"
   }
 }
