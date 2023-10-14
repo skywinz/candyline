@@ -22,12 +22,10 @@ const themeState = atom({
             }
 
             onSet((newValue, _, __) => {
-                if (typeof window !== 'undefined') {
-                    if (newValue === DarkThemes) {
-                        localStorage.setItem('theme', 'dark');
-                    } else {
-                        localStorage.setItem('theme', 'light');
-                    }
+                if (newValue === DarkThemes) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
                 }
             });
         }

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
@@ -14,6 +14,19 @@ import {LENGTH_FHD, LENGTH_MOBILE, NAVBAR_PADDING} from '@/styles/constants';
 
 const App = ({ children }: {children: React.ReactNode}) => {
     const { themeStyle } = useTheme();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+        return (
+            <div>
+                <h1>loading</h1>
+            </div>
+        );
+    }
     return (
         <ThemeProvider theme={themeStyle}>
             <>

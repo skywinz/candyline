@@ -5,6 +5,7 @@ import {DarkThemes, LightThemes} from '@/styles/themes';
 
 const useTheme = () => {
     const [theme, setRawTheme] = useRecoilState(themeState);
+
     return {
         themeStyle: theme,
         theme: theme === LightThemes ? 'light' : 'dark',
