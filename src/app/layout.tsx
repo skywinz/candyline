@@ -12,10 +12,10 @@ import ThemeSelector from '@/components/common/ThemeSelector';
 import {LENGTH_FHD, LENGTH_MOBILE, NAVBAR_PADDING} from '@/styles/constants';
 
 
-const App = ({ children }) => {
+const App = ({ children }: {children: React.ReactNode}) => {
     const { themeStyle } = useTheme();
     return (
-        <ThemeProvider theme={themeStyle} style={{position: 'relative'}}>
+        <ThemeProvider theme={themeStyle}>
             <>
                 <GlobalStyle />
                 <Navbar />
@@ -46,7 +46,7 @@ export default function RootLayout({children}: {
         </head>
         <body>
         <RecoilRoot>
-            <App children={children} />
+            <App>{children}</App>
         </RecoilRoot>
         </body>
         </html>
