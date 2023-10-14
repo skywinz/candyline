@@ -6,7 +6,7 @@ import { RiMoonClearFill } from 'react-icons/ri';
 import {DarkThemes, LightThemes} from '@/styles/themes';
 import styled from 'styled-components';
 
-const ThemeSelector = () => {
+const ThemeSelector = ({extendedStyle}: {extendedStyle: object}) => {
     const {theme, setTheme} = useTheme();
 
     const Icon = theme === 'light' ? BiSolidSun : RiMoonClearFill;
@@ -14,33 +14,18 @@ const ThemeSelector = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
     const changeThemeHandler = () => setTheme(nextTheme);
 
-
-
     return (
-        <Button>
-            <Icon
-                size={32}
-                style={{
-                    cursor: "pointer",
-                }}
-                color={color}
-                onClick={changeThemeHandler}
-            />
-        </Button>
+        <Icon
+            size={32}
+            style={{
+                ...extendedStyle,
+                cursor: "pointer",
+            }}
+            color={color}
+            onClick={changeThemeHandler}
+        />
     );
 }
 
-
-const Button = styled.button`
-    width: 35px;
-    height: 32px;
-    border-radius: 10%;
-    margin-top: 17px;
-    background-color: transparent;
-    
-    transition: background-color 0.5s ease;
-  
-    border: 0;
-`;
 
 export default ThemeSelector;
