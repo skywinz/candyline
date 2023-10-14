@@ -30,9 +30,13 @@ const Layout = styled.div`
     .title {
         background-color: ${(props) => props.theme.main.tagDetail.headerTitleBackgroundColor};
         color: ${(props) => props.theme.main.tagDetail.headerTitleFontColor};
+        
+        transition: background-color 0.5s ease, color 0.5s ease;
     }
     .name {
         color: ${(props) => props.theme.main.tagDetail.headerTagnameFontColor};
+        
+        transition: color 0.5s ease;
     }
 `;
 

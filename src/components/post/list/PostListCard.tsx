@@ -38,11 +38,11 @@ const PostListCard = ({post}: {post: PostCategory}) => {
 
 const Layout = styled.div`
     background-color: ${(props) => props.theme.main.postList.postItemBackgroundColor};
-    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    box-shadow: ${(props) => props.theme.main.postList.postItemShadowColor} 0 2px 8px 0;
     margin-bottom: 70px;
     padding: 20px 30px 10px 30px;
-    transition: box-shadow 0.2s;
     border-left: 8px solid ${(props) => props.theme.main.postList.postItemBorderColor};
+    transition: box-shadow 0.2s, background-color 0.5s ease, border-left-color 0.5s ease;
   
     &:hover {
         box-shadow: ${(props) => props.theme.main.postList.postItemShadowColorHovered} 0 2px 8px 0;

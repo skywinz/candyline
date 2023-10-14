@@ -2,6 +2,8 @@
 
 import styled from 'styled-components';
 import Link from 'next/link';
+import useTheme from '@/hooks/useTheme';
+import {DarkThemes, LightThemes} from '@/styles/themes';
 
 interface SidebarArgs {
     isVisible: boolean;
@@ -10,6 +12,8 @@ interface SidebarArgs {
 
 const Sidebar = ({isVisible}: SidebarArgs) => {
     let searchWord = '';
+    const {theme, setTheme} = useTheme();
+
     const searchButtonHandler = () => {
         const postUrl = `/posts?word=${searchWord}`;
         window.location.href = postUrl; // TODO 성능저하 우려, 수정 필요
@@ -61,7 +65,7 @@ const Main = styled.div`
         background-color: ${(props) => props.theme.main.sidebar.backgroundColor};
         border-right: 3px solid ${(props) => props.theme.main.sidebar.borderColor};
         padding: 240px 40px 80px 40px;
-        transition: width 0.4s, padding 0.4s;
+        transition: width 0.4s, padding 0.4s, background-color 0.5s ease, border-right-color 0.5s ease;
     }
   
     .layout {
@@ -84,8 +88,11 @@ const Main = styled.div`
     .post-search {
         padding: 10px 10px 10px 10px;
         border: 0 solid transparent;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid ${(props) => props.theme.main.sidebar.postSearchFontColor};
+        background-color: ${(props) => props.theme.main.sidebar.postSearchBackgroundColor};
+        color: ${(props) => props.theme.main.sidebar.postSearchFontColor};
         outline: none;
+      
     }
     .post-search-invisible {
         width: 0;
@@ -93,7 +100,7 @@ const Main = styled.div`
     }
     .post-search-visible {
         width: 80%;
-        transition: width 0.4s;
+        transition: width 0.4s, background-color 0.5s ease, color 0.5s ease, border-bottom-color 0.5s ease;
     }
     .search-button {
         border: 0 solid transparent;
@@ -101,6 +108,11 @@ const Main = styled.div`
         border-radius: 3px;
         background-color: ${(props) => props.theme.main.sidebar.buttonBackgroundColor};
         color: ${(props) => props.theme.main.sidebar.buttonFontColor};
+        transition: background-color 0.5s ease, color 0.5s ease;
+      
+        &:hover {
+            background-color: ${(props) => props.theme.main.sidebar.buttonHoveredBackgroundColor};
+        }
     }
   
     h2 {

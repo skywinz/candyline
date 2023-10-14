@@ -1,10 +1,12 @@
 const ColorBase = {
     white: '#FFFFFF',
 
+    gray25: '#d2d2d2',
     gray50: '#b6b6b6',
     gray100:'#999999',
     gray150:'#797979',
 
+    black25: '#4d4d4d',
     black50: '#363636',
     black100: '#212121',
     black999: '#000000',
@@ -30,6 +32,18 @@ const ColorBase = {
 
     yellow50: '#fffcdc',
     yellow100: '#fffbb7',
+    yellow150: '#fffb80',
+    yellow200: '#ece440',
+    yellow250: '#d5cc26',
+
+    darkyellow50: '#b2b08b',
+    darkyellow100: '#b0ae4c',
+    darkyellow150: '#9b9923',
+    darkyellow200: '#888606',
+
+    navajowhite: '#FFDEADFF',
+
+    orange200: '#FF4500FF',
 }
 
 export default ColorBase;

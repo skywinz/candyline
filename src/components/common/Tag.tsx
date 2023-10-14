@@ -22,7 +22,7 @@ const TagLayout = styled.div`
     margin-right: 10px;
     color: ${(props) => props.theme.tag.normalFontColor};
     background-color: ${(props) => props.theme.tag.normalBackgroundColor};
-    transition: color 0.15s, background-color 0.15s;
+    transition: color 0.2s ease, background-color 0.2s ease;
   
     &:hover {
         color: ${(props) => props.theme.tag.hoveredFontColor};
