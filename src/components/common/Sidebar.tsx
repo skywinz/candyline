@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import {AiOutlineClose} from 'react-icons/ai';
 import {SIDEBAR_MOVE_TIME} from '@/styles/constants';
+import {useRouter} from 'next/navigation';
+import {useState} from 'react';
 
 
 interface SidebarArgs {
@@ -13,11 +15,13 @@ interface SidebarArgs {
 
 
 const Sidebar = ({isVisible, setIsVisible}: SidebarArgs) => {
-    let searchWord = '';
+    const [searchWord, setSearchWord] = useState('');
+    const router  = useRouter();
 
     const searchButtonHandler = () => {
-        const postUrl = `/posts?word=${searchWord}`;
-        window.location.href = postUrl; // TODO 성능저하 우려, 수정 필요
+        // TODO 개션 필요
+        // router.push(`/posts?word=${searchWord}`);
+        window.location.href = `/posts?word=${searchWord}`;
     }
 
     return (
@@ -38,8 +42,11 @@ const Sidebar = ({isVisible, setIsVisible}: SidebarArgs) => {
                             type='text'
                             placeholder='검색어를 입력하세요'
                             className={`post-search post-search${isVisible ? '-visible' : '-invisible'}`}
-                            onChange={(e) => {
-                                searchWord = e.target.value;
+                            onChange={(e) => setSearchWord(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.code === 'Enter') {
+                                    searchButtonHandler();
+                                }
                             }}
                         />
                         <button className='search-button' onClick={searchButtonHandler}>GO</button>
