@@ -5,6 +5,10 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-family: 'Hahmlet', serif;
         font-weight: 300;
+        background-color: ${(props) => props.theme.global.backgroundColor};
+        color: ${(props) => props.theme.global.fontColor};
+      
+        transition: background-color 0.5s ease, color 0.5s ease;
     }
     
     body {
@@ -13,14 +17,20 @@ export const GlobalStyle = createGlobalStyle`
         margin-right: 0;
     }
     
-    h1 {
+    h1 h2 h3 h4 h5 {
         background-color: ${(props) => props.theme.markdown.h1.backgroundColor};
         color: ${(props) => props.theme.markdown.h1.fontColor};
+    }
+    
+    h1 {
         border-bottom: 1px solid ${(props) => props.theme.markdown.h1.borderLineColor};
         border-left: 10px solid ${(props) => props.theme.markdown.h1.borderLineColor};
         padding-left: 10px;
         padding-bottom: 10px;
         font-size: 1.7em;
+      
+        transition: border-left-color 0.5s ease, border-bottom-color 0.5s ease;
+      
     }
     
     h2 {
@@ -36,24 +46,26 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1em;
     }
     
-    
-    
     code {
         font-family: 'Nanum Gothic Coding', cursive;
-        background-color: navajowhite;
+        background-color: ${(props) => props.theme.markdown.code.backgroundColor};
+        color: ${(props) => props.theme.markdown.code.fontColor};
         border-radius: 3px;
         padding: 5px;
         white-space: pre-wrap;
         font-size: 0.8em;
         line-height: 70%;
-        color: orangered;
+      
+        transition: background-color 0.5s ease, color 0.5s ease;
     }
     
     pre {
-        background-color: #3f3f3f;
+        background-color: ${(props) => props.theme.markdown.pre.backgroundColor};
         padding: 15px;
-        border: 10px solid #AFD2F066;
+        border: 10px solid ${(props) => props.theme.markdown.pre.borderColor};
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      
+        transition: border 0.5s ease;
 
         code {
           border-radius: 0;
@@ -98,10 +110,14 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${(props) => props.theme.markdown.table.backgroundColor};
         color: ${(props) => props.theme.markdown.table.fontColor};
         text-align: center;
+      
+        transition: background-color 0.5s ease, color 0.5s ease;
     }
     thead tr {
         background-color: ${(props) => props.theme.markdown.thead.backgroundColor};
         color: ${(props) => props.theme.markdown.thead.fontColor};
+      
+        transition: background-color 0.5s ease, color 0.5s ease;
     }
     td, th {
         padding: 5px 20px 5px 20px;
@@ -114,6 +130,8 @@ export const GlobalStyle = createGlobalStyle`
         height: 150px;
         background-color: ${(props) => props.theme.footer.backgroundColor};
         padding: ${FOOTER_PADDING.OVER_QHD};
+      
+        transition: background-color 0.5s ease;
 
         p {
           color: ${(props) => props.theme.footer.fontColor};

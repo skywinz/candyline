@@ -40,6 +40,9 @@ const Layout = styled.li`
     }
     .title {
         flex: 7;
+        a {
+            color: ${(props) => props.theme.main.seriesDetail.postItemFontColor};
+        }
     }
     .date {
         flex: 2;

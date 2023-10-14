@@ -23,12 +23,12 @@ const PostListByTagItem = ({ post, index }: {post: PostCategory, index: number})
 const Layout = styled.li`
     width: 100%;
     display: flex;
-    background-color: ${(props) => props.theme.main.seriesDetail.postItemBackgroundColor};
+    background-color: ${(props) => props.theme.main.tagDetail.postItemBackgroundColor};
     transition: background-color 0.2s;
     padding: 2px 0 2px 0;
-    
+  
     &:hover {
-        background-color: ${(props) => props.theme.main.seriesDetail.postItemBackgroundColorHovered};
+        background-color: ${(props) => props.theme.main.tagDetail.postItemBackgroundColorHovered};
     }
     p {
         margin-top: 0;
@@ -40,6 +40,9 @@ const Layout = styled.li`
     }
     .title {
         flex: 7;
+        a {
+            color: ${(props) => props.theme.main.tagDetail.postItemFontColor};
+        }
     }
     .date {
         flex: 2;

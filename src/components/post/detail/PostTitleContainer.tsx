@@ -51,6 +51,8 @@ const Title = styled.p`
     font-size: 2em;
     margin-bottom: -1px;
     font-weight: 400;
+  
+    transition: background-color 0.5s ease, color 0.5s ease;
 `;
 
 const SeriesText = styled.p`
