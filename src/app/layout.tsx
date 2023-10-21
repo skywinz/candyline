@@ -8,6 +8,7 @@ import {GlobalStyle} from '@/styles/globals';
 import {ThemeProvider} from 'styled-components';
 import useTheme from '@/hooks/useTheme';
 import {RecoilRoot} from 'recoil';
+import {ClipLoader} from 'react-spinners';
 
 
 const App = ({ children }: {children: React.ReactNode}) => {
@@ -21,10 +22,17 @@ const App = ({ children }: {children: React.ReactNode}) => {
     if (!isClient) {
         return (
             <>
-                <h1>Loading</h1>
+                <ClipLoader
+                    color="black"
+                    loading={true}
+                    size={100}
+                    aria-label="loading spinner"
+                />
+                <h2>Page Loading</h2>
             </>
         );
     }
+
     return (
         <ThemeProvider theme={themeStyle}>
             <>
