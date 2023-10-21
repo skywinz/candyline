@@ -107,19 +107,9 @@ Second Definition
 
 # MATH
 
-$$
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha \\
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha \\
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-a^2 = b^2 + c^2 - 2bc\cos\alpha
-$$
+$$ 2^3 + 2_{3} = 1333 $$
+
+이건 $$a = 3$$ 이다.
 
 
 # 코드

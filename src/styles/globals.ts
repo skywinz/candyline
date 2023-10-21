@@ -156,6 +156,4 @@ export const GlobalStyle = createGlobalStyle`
             padding: ${FOOTER_PADDING.MOBILE};
         }
     }
-    
-
 `;
