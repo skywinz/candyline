@@ -6,11 +6,13 @@ import Link from 'next/link';
 
 const SeriesCard = (data: SeriesData) => {
     const {name, summary} = data;
+    let image = data.image ? data.image : '/images/series/default.png';
     const detailUrl = `/series/${name}`;
 
     return (
         <Layout>
             <Link style={{textDecoration: 'none'}} href={detailUrl}><h2>{name}</h2></Link>
+            <img alt={`image-${name}`} src={image} width="100%" />
             <p>{summary}</p>
         </Layout>
     );

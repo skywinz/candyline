@@ -16,8 +16,8 @@ export class SeriesRepository extends Repository {
         const rawSeries: SeriesData[] = rawData.series;
 
         for (const [_, data] of Object.entries(rawSeries)) {
-            const {name, summary} = data;
-            this.series.push({name, summary});
+            const {name, summary, image} = data;
+            this.series.push({name, summary, image});
             this.indexes.set(name, this.series.length - 1);
         }
     }

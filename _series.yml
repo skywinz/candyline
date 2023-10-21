@@ -2,6 +2,8 @@ series:
   kramdownTest:
     name: kramdown-test
     summary: '마크다운 테스트를 하는 곳이에요 마크다운 테스트를 하는 곳이에요 마크다운 테스트를 하는 곳이에요 마크다운 테스트를 하는 곳이에요 마크다운 테스트를 하는 곳이에요 마크다운 테스트를 하는 곳이에요 마크다운 테스트를 하는 곳이에요 마크다운 테스트를 하는 곳이에요'
+    image: ""
   helloWorld:
     name: hello-world
     summary: '헬로 월드!'
+    image: images/series/example.gif
