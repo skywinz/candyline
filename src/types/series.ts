@@ -2,6 +2,7 @@
 export interface SeriesData {
     name: string;
     summary: string;
+    image?: string;
 }
 
 
