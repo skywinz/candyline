@@ -1,5 +1,4 @@
-import {PostDetailResponse, PostFilter, PostListResponse} from '@/types/post';
-import {ErrorResponse} from '@/types';
+import {PostFilter} from '@/types/post';
 import {POST_PAGINATION_SIZE} from '@/constants/client';
 
 export const getPostDetail = async (
