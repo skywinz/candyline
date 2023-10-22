@@ -7,3 +7,7 @@ series:
     name: hello-world
     summary: '헬로 월드!'
     image: images/series/example.gif
+  backend-basic:
+    name: "백엔드 이론"
+    summary: "백엔드 개발을 한다면 꼭 알아야 할 정보를 다룹니다. 즉, 어떤 프레임워크를 쓰든 간에 반드시 알아야 할 정보들을 기록합니다."
+    image: ""
