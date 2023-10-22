@@ -15,7 +15,7 @@ const PostDetailPage = async ({ params }: {params: PostDetailPageArgs}) => {
     const {data, statusCode} = await getPostDetail(getInternalAPIHost(), id, 'no-cache');
 
     if (statusCode === 404) {
-        redirect('/404');
+        redirect('/not-found');
     } else if(statusCode !== 200) {
         redirect('/unknown-error');
     }

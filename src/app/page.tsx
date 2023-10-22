@@ -1,10 +1,15 @@
 import React from 'react';
+import {getAbout} from '@/apis/internal/about';
+import {getInternalAPIHost} from '@/apis/internal';
+import {marked} from 'marked';
 
-const Page: React.FC = () => {
+const Page = async () => {
+    const content = await getAbout(getInternalAPIHost(), 'no-cache');
+    const htmlContent = marked(content);
+
     return (
         <main>
-            <h2>Hello!</h2>
-            <p>SkyWINZ의 기술 블로그 입니다.</p>
+            <div dangerouslySetInnerHTML={{__html: htmlContent}} />
         </main>
     );
 }

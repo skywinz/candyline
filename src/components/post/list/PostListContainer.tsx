@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import {PostFilter} from '@/types/post';
 import {POST_PAGINATION_SIZE} from '@/constants/client';
 
+
 const PostListContainer = ({host}: {host: string}) => {
     const searchParams = useSearchParams();
     const word = searchParams.get('word');
@@ -19,8 +20,11 @@ const PostListContainer = ({host}: {host: string}) => {
 
     const postListDataStatus = usePostPagination(host, POST_PAGINATION_SIZE, filter);
     const PostItemComponents = postListDataStatus.posts.map((post) => <PostListCard key={post.id} post={post} />);
+    const loadingComponents = Array.from({length: 4}, (_, idx) => <PostListCard key={idx}/>)
+
     return (
         <Layout>
+            {postListDataStatus.isLoading && loadingComponents}
             {PostItemComponents}
         </Layout>
     );
