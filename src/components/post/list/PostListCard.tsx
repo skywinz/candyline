@@ -1,36 +1,47 @@
 'use client';
 
-
 import {PostCategory} from '@/types/post';
 import styled from 'styled-components';
 import TagList from '@/components/common/TagList';
 import Link from 'next/link';
 import {date2String} from '@/utils/date';
 import {STYLE_LINK} from '@/constants/styles';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 
-const PostListCard = ({post}: {post: PostCategory}) => {
-    const {tags, title, summary, id, series, date} = post;
+
+const PostListCard = ({post}: {post?: PostCategory}) => {
+    const {tags, title, summary, id, series, date} = post ? post : {tags: [], title: '', summary: '', id: '', series: '', date: ''};
     const detailURL = `/posts/${id}`;
     const seriesURL = `/series/${series}`;
-    const dateString = date2String(new Date(date));
+    const dateString = date ? date2String(new Date(date)) : '';
 
     return (
         <Layout>
             <Link href={detailURL} style={STYLE_LINK}>
-                <h2 className='title'>{title}</h2>
+                <h2 className='title'>{title || <Skeleton />}</h2>
             </Link>
             <div className='subContent'>
-                <Link href={seriesURL} style={STYLE_LINK}>
-                    <p className='series'>Series: {series}</p>
-                </Link>
-                <p className='date'>{dateString}</p>
+                {
+                    series && (
+                        <Link href={seriesURL} style={STYLE_LINK}>
+                            <p className='series'>Series: {series}</p>
+                        </Link>
+                    )
+                }
+                {
+                    !series && (
+                        <p><Skeleton /></p>
+                    )
+                }
+                <p className='date'>{dateString || <Skeleton />}</p>
             </div>
             <div className='summary'>
-                <p>{summary}</p>
+                <p>{summary || <Skeleton />}</p>
             </div>
             <footer>
                 <hr />
-                <TagList tags={tags} />
+                {tags && <TagList tags={tags} />}
             </footer>
         </Layout>
     );
