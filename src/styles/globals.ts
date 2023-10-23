@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 300;
         background-color: ${(props) => props.theme.global.backgroundColor};
         color: ${(props) => props.theme.global.fontColor};
+        font-size: 1.1em;
+        line-height: 1.6;
       
         transition: background-color 0.5s ease, color 0.5s ease;
     }
@@ -64,6 +66,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 15px;
         border: 10px solid ${(props) => props.theme.markdown.pre.borderColor};
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        word-break:break-all;
       
         transition: border 0.5s ease;
 

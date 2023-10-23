@@ -20,6 +20,7 @@ const TagLayout = styled.div`
     // box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     padding: 2px 10px 2px 10px;
     margin-right: 10px;
+    margin-bottom: 10px;
     color: ${(props) => props.theme.tag.normalFontColor};
     background-color: ${(props) => props.theme.tag.normalBackgroundColor};
     transition: color 0.2s ease, background-color 0.2s ease;

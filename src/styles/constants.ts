@@ -17,9 +17,9 @@ const DPC = {
     },
     FHD: {
         top: '10px',
-        right: '200px',
+        right: '400px',
         bottom: '100px',
-        left: '200px',
+        left: '400px',
     },
     MOBILE: {
         top: '10px',
