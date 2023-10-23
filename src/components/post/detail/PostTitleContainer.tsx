@@ -51,6 +51,7 @@ const Title = styled.p`
     font-size: 2em;
     margin-bottom: -1px;
     font-weight: 400;
+    text-align: center;
   
     transition: background-color 0.5s ease, color 0.5s ease;
 `;

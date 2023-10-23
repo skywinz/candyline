@@ -25,4 +25,5 @@ export default TagList;
 
 const Layout = styled.div`
     display: flex;
+    flex-wrap: wrap;
 `;
