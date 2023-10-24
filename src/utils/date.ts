@@ -1,8 +1,9 @@
 export const date2String = (date: Date, isTimeExtended: boolean = false): string => {
-    let s = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+    let s = `${date.getUTCFullYear()}년 ${date.getUTCMonth() + 1}월 ${date.getUTCDate()}일`;
+
 
     if (isTimeExtended) {
-        s += ` ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`;
+        s += ` ${date.getUTCHours()}시 ${date.getUTCMinutes()}분 ${date.getUTCSeconds()}초`;
     }
     return s;
 }
