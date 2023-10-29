@@ -3,6 +3,7 @@ import {SeriesData} from '@/types/series';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import {PATH_FILE_SERIES} from '@/constants/server';
+import {PostSeries} from '../models';
 
 export class SeriesRepository extends Repository {
     private static instance: SeriesRepository | null = null;
@@ -30,8 +31,21 @@ export class SeriesRepository extends Repository {
         return SeriesRepository.instance;
     }
 
-    public getList(): SeriesData[] {
-        return this.series;
+    public async getList(): Promise<SeriesData[]> {
+        const seriesList: SeriesData[] = [];
+
+        await PostSeries.findAll()
+            .then((serieses) => {
+                serieses.forEach((series) => {
+                    const seriesAttribute = series.get();
+                    seriesList.push({
+                        name: seriesAttribute.name,
+                        summary: seriesAttribute.summary,
+                        image: seriesAttribute.imageUrl,
+                    });
+                })
+            })
+        return seriesList;
     }
 
     public getSeries(seriesName: string): SeriesData | null {

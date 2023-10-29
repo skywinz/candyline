@@ -23,12 +23,11 @@ export class SeriesService extends Service {
     }
 
 
-    public getList(): SeriesData[] {
+    public async getList(): Promise<SeriesData[] >{
         if(!(this.seriesRepository && this.postRepository)) {
             throw new Error("Initial Failed Error");
         }
-
-        return this.seriesRepository.getList();
+        return await this.seriesRepository.getList();
     }
 
     public getSeries(name: string): SeriesData | null {
