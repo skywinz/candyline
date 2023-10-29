@@ -101,7 +101,7 @@ const savePosts2database = async (posts: PostData[]) => {
             imageUrl: postData.image,
             publicDate: postData.date ,
             summary: postData.summary,
-            series: postData.series,
+            seriesName: postData.series,
         });
         for(const tag of postData.tags) {
             await PostTag.create({

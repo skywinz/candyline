@@ -14,11 +14,12 @@ export const sequelize = new Sequelize({
 
 
 export interface PostAttributes {
-    id: number;
+    id: string;
     title: string;
     imageUrl?: string;
     publicDate: Date;
     summary?: string;
+    seriesName?: string;
 }
 
 export interface PostSeriesAttributes {
@@ -28,8 +29,9 @@ export interface PostSeriesAttributes {
 }
 
 export interface PostTagAttributes {
-    id: number;
+    id?: number;
     name: string;
+    postId?: string;
 }
 
 
