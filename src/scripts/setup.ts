@@ -80,7 +80,6 @@ const collectPosts = async (): Promise<PostData[]> => {
             content: post.content,
             date: new Date(post.data.date),
             image: post.data.image,
-            layout: post.data.layout,
             series: post.data.series,
             summary: post.data.summary,
             tags: post.data.tags,
@@ -95,7 +94,8 @@ const collectPosts = async (): Promise<PostData[]> => {
 const savePosts2database = async (posts: PostData[]) => {
     for (const postData of posts) {
         postData.date.setHours(postData.date.getHours() + 9);
-        await Post.create({
+        const postInstance = await Post.create({
+            pk: parseInt(postData.id.split('_')[0]),
             id: postData.id,
             title: postData.title,
             imageUrl: postData.image,
@@ -106,7 +106,7 @@ const savePosts2database = async (posts: PostData[]) => {
         for(const tag of postData.tags) {
             await PostTag.create({
                 name: tag,
-                postId: postData.id,
+                postPk: postInstance.dataValues.pk,
             })
         }
     }

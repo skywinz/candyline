@@ -6,7 +6,7 @@ import {PostDetailRequest} from '@/types/post';
 export const GET = async (req: Request, { params }: { params: PostDetailRequest })  => {
     const { id } = params;
     const service = await BlogPostService.getInstance();
-    const post = service.getDetail(id);
+    const post = await service.getDetail(id);
     if (post === null) {
         return NextResponse.json({error: 'Post Not Found'}, {status: 404});
     } else {

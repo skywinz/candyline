@@ -12,16 +12,6 @@ export const sequelize = new Sequelize({
     storage: SQLITE_ROOT,
 });
 
-
-export interface PostAttributes {
-    id: string;
-    title: string;
-    imageUrl?: string;
-    publicDate: Date;
-    summary?: string;
-    seriesName?: string;
-}
-
 export interface PostSeriesAttributes {
     name: string;
     summary: string;
@@ -31,15 +21,30 @@ export interface PostSeriesAttributes {
 export interface PostTagAttributes {
     id?: number;
     name: string;
-    postId?: string;
+    postPk?: number;
 }
 
+export interface PostAttributes {
+    pk: number;
+    id: string;
+    title: string;
+    imageUrl?: string;
+    publicDate: Date;
+    summary?: string;
+    seriesName?: string;
+    postTags?: Model<PostTagAttributes>[]
+}
 
 export const Post = sequelize.define<Model<PostAttributes>, PostAttributes>('post', {
+    pk: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
     id: {
-        comment: 'Integer값이 아닌 파일명이 들어간다.',
+        comment: '포스트 고유 아이디',
         type: DataTypes.STRING(64),
-        primaryKey: true,
+        unique: true,
+        allowNull: false,
     },
     title: {
         type: DataTypes.STRING(128),
@@ -102,8 +107,9 @@ Post.belongsTo(PostSeries);
 
 Post.hasMany(PostTag, {
     foreignKey: {
-        name: 'postId',
-        field: 'post_id',
-    }
+        name: 'postPk',
+        field: 'post_pk',
+    },
+    as: 'postTags',
 });
 PostTag.belongsTo(Post);
