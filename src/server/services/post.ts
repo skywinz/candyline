@@ -1,5 +1,5 @@
 import {Service} from '@/server/services/index';
-import {PostFilter} from '@/types/post';
+import {PostData, PostFilter} from '@/types/post';
 import {PostRepository} from '@/server/repositories/post';
 
 
@@ -20,11 +20,11 @@ export class BlogPostService extends Service {
         return BlogPostService.instance;
     }
 
-    public getDetail(postId: string) {
+    public async getDetail(postId: string): Promise<PostData | null | undefined> {
         return this.repository?.getDetail(postId);
     }
 
-    public getList(startIndex: number = 0, pageSize: number = 10, filter: PostFilter = {}) {
+    public async getList(startIndex: number = 99999999, pageSize: number = 10, filter: PostFilter = {}) {
         return this.repository?.getList(startIndex, pageSize, filter);
     }
 }

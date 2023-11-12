@@ -11,7 +11,7 @@ const useFetchPosts = (
 ) => {
     const [postListDataStatus, setPostListDataStatus] = useState<PostListDataStatus>({
         posts: [],
-        nextIndex: 0,
+        nextIndex: 99999999,
         isError: false,
         isLoading: false,
     });
