@@ -1,10 +1,11 @@
-import {PostCategory, PostData, PostFilter, PostListData} from '@/types/post';
 import fs from 'fs';
 import matter, {GrayMatterFile} from 'gray-matter';
 import {Model, Op, WhereOptions} from 'sequelize';
+import {PostCategory, PostData, PostFilter, PostListData} from '@/types/post';
 import {Repository} from '@/server/repositories/index';
 import {PATH_DIR_POST} from '@/constants/server';
 import {Post, PostAttributes, PostTag, PostTagAttributes} from '@/server/models';
+import PostCategoryCombinator from '@/server/db-combinator/post';
 
 export class PostRepository extends Repository {
     private static instance: PostRepository | null = null;
@@ -21,28 +22,18 @@ export class PostRepository extends Repository {
 
     public async getDetail(postId: string): Promise<PostData | null> {
         const postInstance: Model<PostAttributes> | null = await Post.findOne({
-            where: {
-                id: postId,
-            }
+            where: { id: postId }
         });
 
         if (!postInstance) {
             return null;
         }
 
-        const tags = (await PostTag.findAll({
+        const tagInstances: Model<PostTagAttributes>[] = await PostTag.findAll({
             where: {postPk: postInstance.dataValues.pk}
-        })).map((tag) => tag.dataValues.name);
+        });
 
-        let postCategories: PostCategory = {
-            id: postInstance.dataValues.id,
-            date: postInstance.dataValues.publicDate,
-            image: postInstance.dataValues.imageUrl,
-            title: postInstance.dataValues.title,
-            series: postInstance.dataValues.seriesName,
-            summary: postInstance.dataValues.summary,
-            tags: tags,
-        }
+        const postCategory = new PostCategoryCombinator(postInstance, tagInstances).get();
 
         const fullPath = `${PATH_DIR_POST}/${postId}.md`;
         if(!fs.existsSync(fullPath)) {
@@ -51,7 +42,7 @@ export class PostRepository extends Repository {
 
         const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
         return {
-            ...postCategories,
+            ...postCategory,
             content: post.content,
         }
     }
@@ -86,22 +77,10 @@ export class PostRepository extends Repository {
             order: [['pk', 'DESC']]
         }) || [];
 
-        const posts: PostCategory[] = postInstances.map((postInstance) => {
-            const postTagInstanceList: Model<PostTagAttributes>[] = postInstance.dataValues.postTags || [];
-            const postTags = postTagInstanceList.map((tagInstance) => tagInstance.dataValues.name);
-            return {
-                id: postInstance.dataValues.id,
-                date: postInstance.dataValues.publicDate,
-                image: postInstance.dataValues.imageUrl,
-                series: postInstance.dataValues.seriesName,
-                summary: postInstance.dataValues.summary,
-                tags: postTags,
-                title: postInstance.dataValues.title,
-            };
-        });
+        const posts: PostCategory[] = postInstances.map((postInstance) =>
+            new PostCategoryCombinator(postInstance).get());
 
         let nextIndex = null;
-
         if (postInstances.length > 0) {
             const nextStartPk = postInstances[postInstances.length - 1].dataValues.pk;
             const { count } = await Post.findAndCountAll({
