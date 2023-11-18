@@ -1,6 +1,7 @@
 const ColorBase = {
     white: '#FFFFFF',
 
+    gray12: '#eeeeee',
     gray25: '#d2d2d2',
     gray50: '#b6b6b6',
     gray100:'#999999',

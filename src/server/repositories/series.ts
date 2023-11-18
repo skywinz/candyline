@@ -4,18 +4,6 @@ import {PostSeries, PostSeriesAttributes} from '../models';
 import {Model} from 'sequelize';
 
 export class SeriesRepository extends Repository {
-    private static instance: SeriesRepository | null = null;
-
-    protected async init() {}
-
-    public static async getInstance(): Promise<SeriesRepository> {
-        if (!SeriesRepository.instance) {
-            SeriesRepository.instance = new SeriesRepository();
-            await SeriesRepository.instance.init();
-        }
-        return SeriesRepository.instance;
-    }
-
     public async getList(): Promise<SeriesData[]> {
         const seriesList: SeriesData[] = [];
 
@@ -32,7 +20,6 @@ export class SeriesRepository extends Repository {
             })
         return seriesList;
     }
-
     public async getSeries(seriesName: string): Promise<SeriesData | null> {
         const res: Model<PostSeriesAttributes> | null = await PostSeries.findOne({
             where: {

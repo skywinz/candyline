@@ -7,7 +7,7 @@ const Utterances = () => {
 
     return (
         <section
-            style={{ width: '100%'}}
+            style={{ width: '100%'  }}
             ref={(element) => {
                 if (!element) {
                     return;
