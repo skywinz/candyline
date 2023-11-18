@@ -1,5 +1,4 @@
 import {createGlobalStyle} from 'styled-components';
-import {DEFAULT_PADDING, FOOTER_PADDING, LENGTH_FHD, LENGTH_MOBILE} from '@/styles/constants';
 
 export const GlobalStyle = createGlobalStyle`
     html {
@@ -9,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme.global.fontColor};
         font-size: 1.1em;
         line-height: 1.6;
-      
+        
         transition: background-color 0.5s ease, color 0.5s ease;
     }
     
@@ -127,36 +126,18 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     .default-layout {
-        padding: ${DEFAULT_PADDING.OVER_QHD};
     }
-    .footer {
-        height: 150px;
-        background-color: ${(props) => props.theme.footer.backgroundColor};
-        padding: ${FOOTER_PADDING.OVER_QHD};
-      
-        transition: background-color 0.5s ease;
 
-        p {
-          color: ${(props) => props.theme.footer.fontColor};
-          font-size: 0.7em;
-          text-decoration: none;
-        }
-    }
-    
-    @media (max-width: ${LENGTH_FHD}px) {
-        .default-layout {
-            padding: ${DEFAULT_PADDING.FHD};
-        }
-        .footer {
-            padding: ${FOOTER_PADDING.FHD};
-        }
-    }
-    @media (max-width: ${LENGTH_MOBILE}px) {
-        .default-layout {
-            padding: ${DEFAULT_PADDING.MOBILE};
-        }
-        .footer {
-            padding: ${FOOTER_PADDING.MOBILE};
-        }
+    .footer {
+      height: 150px;
+      background-color: ${(props) => props.theme.footer.backgroundColor};
+
+      transition: background-color 0.5s ease;
+
+      p {
+        color: ${(props) => props.theme.footer.fontColor};
+        font-size: 0.7em;
+        text-decoration: none;
+      }
     }
 `;

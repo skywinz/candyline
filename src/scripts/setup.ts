@@ -6,7 +6,7 @@ import yaml from 'js-yaml';
 
 import {Post, PostSeries, PostTag, sequelize} from '../server/models';
 import {PATH_DIR_POST, PATH_FILE_SERIES, SQLITE_ROOT} from '../constants/server';
-import {PostData} from '@/types/post';
+import {PostCategory} from '@/types/post';
 import {SeriesData} from '@/types/series';
 
 /**
@@ -66,18 +66,17 @@ const saveSerieses2Database = async (serieses: SeriesData[]) => {
  * _posts 디렉토리 안에 있는 모든 마크다운 기반의 포스트 파일 데이터들을
  * 불러오기
  */
-const collectPosts = async (): Promise<PostData[]> => {
+const collectPosts = async (): Promise<PostCategory[]> => {
     const postFiles: ParsedPath[] = (await glob(`${PATH_DIR_POST}/*.md`)).map((pathname) => path.parse(pathname));
 
     // 빠른 속도로 세팅하기 위해
     // 비동기로 한꺼번에 수행
-    return await Promise.all(postFiles.map(async (file): Promise<PostData> => {
+    return await Promise.all(postFiles.map(async (file): Promise<PostCategory> => {
         const postId = file.name;
         const fullPath = `${file.dir}/${file.base}`;
         const post = matter(fs.readFileSync(fullPath, 'utf-8'));
         return {
             id: postId,
-            content: post.content,
             date: new Date(post.data.date),
             image: post.data.image,
             series: post.data.series,
@@ -91,7 +90,7 @@ const collectPosts = async (): Promise<PostData[]> => {
 /**
  * 포스트 데이터들을 전부 DB에 저장
  */
-const savePosts2database = async (posts: PostData[]) => {
+const savePosts2database = async (posts: PostCategory[]) => {
     for (const postData of posts) {
         postData.date.setHours(postData.date.getHours() + 9);
         const postInstance = await Post.create({

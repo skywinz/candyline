@@ -3,7 +3,7 @@
 import {SeriesData} from '@/types/series';
 import styled from 'styled-components';
 import SeriesCard from '@/components/series/list/SeriesCard';
-import {LENGTH_FHD, LENGTH_MOBILE} from '@/styles/constants';
+import {LENGTH_MOBILE} from '@/styles/constants';
 
 const SeriesCardGridLayout = ({seriesList}: {seriesList: SeriesData[]}) => {
     const SeriesCardComponents = seriesList.map((series, idx) =>

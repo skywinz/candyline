@@ -10,8 +10,8 @@ export class SeriesService extends Service {
     private seriesRepository: SeriesRepository | null = null;
 
     private async init() {
-        this.postRepository = await PostRepository.getInstance();
-        this.seriesRepository = await SeriesRepository.getInstance();
+        this.postRepository = new PostRepository();
+        this.seriesRepository = new SeriesRepository();
     }
 
     public static async getInstance(): Promise<SeriesService> {
@@ -21,7 +21,6 @@ export class SeriesService extends Service {
         }
         return SeriesService.instance;
     }
-
 
     public async getList(): Promise<SeriesData[] >{
         if(!(this.seriesRepository && this.postRepository)) {

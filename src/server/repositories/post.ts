@@ -1,30 +1,15 @@
 import fs from 'fs';
 import matter, {GrayMatterFile} from 'gray-matter';
 import {Model, Op, WhereOptions} from 'sequelize';
-import {PostCategory, PostData, PostFilter, PostListData} from '@/types/post';
+import {PostCategory, PostData, PostFilter, PostListData, PrevNextPostItem} from '@/types/post';
 import {Repository} from '@/server/repositories/index';
 import {PATH_DIR_POST} from '@/constants/server';
 import {Post, PostAttributes, PostTag, PostTagAttributes} from '@/server/models';
 import PostCategoryCombinator from '@/server/db-combinator/post';
 
 export class PostRepository extends Repository {
-    private static instance: PostRepository | null = null;
-
-    protected async init() {}
-
-    public static async getInstance(): Promise<PostRepository> {
-        if(!PostRepository.instance) {
-            PostRepository.instance = new PostRepository();
-            await PostRepository.instance.init();
-        }
-        return PostRepository.instance;
-    }
-
     public async getDetail(postId: string): Promise<PostData | null> {
-        const postInstance: Model<PostAttributes> | null = await Post.findOne({
-            where: { id: postId }
-        });
-
+        const postInstance: Model<PostAttributes> | null = await Post.findOne({where: { id: postId }});
         if (!postInstance) {
             return null;
         }
@@ -40,10 +25,41 @@ export class PostRepository extends Repository {
             return null;
         }
 
+        const prevPostInstance: Model<PostAttributes> | null = await Post.findOne({
+            where: {
+                seriesName: { [Op.eq]: postCategory.series },
+                publicDate: { [Op.lt]: postCategory.date }
+            },
+            order: [['publicDate', 'DESC']],
+            limit: 1,
+        });
+        const nextPostInstance: Model<PostAttributes> | null = await Post.findOne({
+            where: {
+                seriesName: { [Op.eq]: postCategory.series },
+                publicDate: { [Op.gt]: postCategory.date }
+            },
+            order: [['publicDate', 'ASC']],
+            limit: 1,
+        });
+
+        const prev: PrevNextPostItem | null = (
+            prevPostInstance ? {
+                id: prevPostInstance.dataValues.id,
+                title: prevPostInstance.dataValues.title
+            } : null
+        );
+        const next: PrevNextPostItem | null = (
+            nextPostInstance ? {
+                id: nextPostInstance.dataValues.id,
+                title: nextPostInstance.dataValues.title
+            } : null
+        );
+
         const post: GrayMatterFile<string> = matter(fs.readFileSync(fullPath, 'utf-8'));
         return {
             ...postCategory,
             content: post.content,
+            prev, next,
         }
     }
 

@@ -10,8 +10,16 @@ export interface BasePostData {
     title: string;
 }
 
+
+export interface PrevNextPostItem {
+    id: string;
+    title: string;
+}
+
 export interface PostData extends BasePostData {
     content?: string;
+    prev?: PrevNextPostItem | null;
+    next?: PrevNextPostItem | null;
 }
 
 export interface PostCategory extends BasePostData {}

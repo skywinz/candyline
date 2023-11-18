@@ -9,7 +9,7 @@ export class BlogPostService extends Service {
 
 
     private async init() {
-        this.repository = await PostRepository.getInstance();
+        this.repository = new PostRepository();
     }
 
     public static async getInstance(): Promise<BlogPostService> {
