@@ -17,6 +17,19 @@ export const GlobalStyle = createGlobalStyle`
         margin-left: 0;
         margin-right: 0;
     }
+    ::-webkit-scrollbar {
+        width: 16px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: ${(props) => props.theme.scrollBar.commonColor};
+        border-radius: 12px;
+        background-clip: padding-box;
+        border: 4px solid transparent;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: ${(props) => props.theme.scrollBar.commonBackgroundColor};
+        border-radius: 12px;
+    }
     
     h1 h2 h3 h4 h5 {
         background-color: ${(props) => props.theme.markdown.h1.backgroundColor};
