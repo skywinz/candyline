@@ -1,19 +1,25 @@
-import {ResponseInterface} from '@/types/index';
 
 // Base
 export interface BasePostData {
     id: string;
     date: Date;
-    image: string;
-    layout: string;
-    series: string;
-    summary: string;
-    tags: Array<string>;
+    image?: string;
+    series?: string;
+    summary?: string;
+    tags: string[];
+    title: string;
+}
+
+
+export interface PrevNextPostItem {
+    id: string;
     title: string;
 }
 
 export interface PostData extends BasePostData {
     content?: string;
+    prev?: PrevNextPostItem | null;
+    next?: PrevNextPostItem | null;
 }
 
 export interface PostCategory extends BasePostData {}
@@ -33,20 +39,9 @@ export interface PostFilter {
     word?: string;
 }
 
-
 // Request
 export interface PostDetailRequest {
     id: string;
-}
-
-
-// Response
-export interface PostListResponse extends PostListData, ResponseInterface {
-    count: number;
-}
-
-export interface PostDetailResponse extends ResponseInterface {
-    data: PostData;
 }
 
 // Hook

@@ -17,6 +17,10 @@ export const fetchPostList = async (
         filter,
         postListDataStatus.nextIndex,
     ).then((res) => {
+        if (res.statusCode === 500) {
+            throw Error('Got Error');
+        }
+
         const {posts, nextIndex} = res;
         return {
             posts: postListDataStatus.posts.concat(posts),

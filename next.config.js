@@ -10,5 +10,8 @@ module.exports ={
     },
     compilerOptions: {
         useUnknownInCatchVariables: false,
+    },
+    experimental: {
+        serverComponentsExternalPackages: ['sequelize'],
     }
 };

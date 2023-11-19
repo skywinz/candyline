@@ -1,6 +1,7 @@
 const ColorBase = {
     white: '#FFFFFF',
 
+    gray12: '#eeeeee',
     gray25: '#d2d2d2',
     gray50: '#b6b6b6',
     gray100:'#999999',
@@ -29,6 +30,7 @@ const ColorBase = {
     red200: '#ec4f6e',
     red250: '#e83658',
     red300: '#DC143C',
+    red350: '#b00d35',
 
     yellow50: '#fffcdc',
     yellow100: '#fffbb7',

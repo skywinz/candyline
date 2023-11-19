@@ -1,4 +1,6 @@
 import ColorBase from '@/styles/colors';
+import {types} from 'sass';
+import Color = types.Color;
 
 export const LightThemes = {
     global: {
@@ -34,6 +36,13 @@ export const LightThemes = {
             titleFontColor: ColorBase.white,
             seriesFontColor: ColorBase.black999,
             hoveredSeriesFontColor: ColorBase.red200,
+            pageMovingButtonBackgroundColor: ColorBase.white,
+            pageMovingButtonBorderColor: ColorBase.blue12,
+            pageMovingButtonHoveredBackgroundColor: ColorBase.blue12,
+            pageMovingButtonIconColor: ColorBase.blue250,
+            pageMovingButtonFontColor: ColorBase.blue200,
+            pageMovingButtonTitleFontColor: ColorBase.black50,
+            readingProgressBarBackgroundColor: ColorBase.red350,
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray150,
@@ -113,6 +122,10 @@ export const LightThemes = {
         normalFontColor: ColorBase.blue300,
         hoveredBackgroundColor: ColorBase.blue350,
         hoveredFontColor: ColorBase.white,
+    },
+    scrollBar: {
+        commonBackgroundColor: ColorBase.blue12,
+        commonColor: ColorBase.blue200,
     }
 }
 
@@ -150,6 +163,13 @@ export const DarkThemes = {
             titleFontColor: ColorBase.black100,
             seriesFontColor: ColorBase.darkyellow50,
             hoveredSeriesFontColor: ColorBase.blue50,
+            pageMovingButtonBackgroundColor: ColorBase.black50,
+            pageMovingButtonBorderColor: ColorBase.black50,
+            pageMovingButtonHoveredBackgroundColor: ColorBase.black100,
+            pageMovingButtonIconColor: ColorBase.yellow150,
+            pageMovingButtonTitleFontColor: ColorBase.gray50,
+            pageMovingButtonFontColor: ColorBase.yellow150,
+            readingProgressBarBackgroundColor: ColorBase.yellow150,
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray25,
@@ -179,7 +199,7 @@ export const DarkThemes = {
             headerTitleFontColor: ColorBase.black100,
             headerTagnameFontColor: ColorBase.yellow50,
             postItemFontColor: ColorBase.yellow50,
-        }
+        },
     },
     markdown: {
         h1: {
@@ -229,5 +249,9 @@ export const DarkThemes = {
         normalFontColor: ColorBase.yellow50,
         hoveredBackgroundColor: ColorBase.yellow150,
         hoveredFontColor: ColorBase.black100,
+    },
+    scrollBar: {
+        commonBackgroundColor: ColorBase.darkyellow50,
+        commonColor: ColorBase.yellow150,
     }
 }

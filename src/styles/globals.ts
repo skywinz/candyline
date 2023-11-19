@@ -1,5 +1,4 @@
 import {createGlobalStyle} from 'styled-components';
-import {DEFAULT_PADDING, FOOTER_PADDING, LENGTH_FHD, LENGTH_MOBILE} from '@/styles/constants';
 
 export const GlobalStyle = createGlobalStyle`
     html {
@@ -9,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme.global.fontColor};
         font-size: 1.1em;
         line-height: 1.6;
-      
+        
         transition: background-color 0.5s ease, color 0.5s ease;
     }
     
@@ -17,6 +16,19 @@ export const GlobalStyle = createGlobalStyle`
         margin-top: 70px;
         margin-left: 0;
         margin-right: 0;
+    }
+    ::-webkit-scrollbar {
+        width: 16px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: ${(props) => props.theme.scrollBar.commonColor};
+        border-radius: 12px;
+        background-clip: padding-box;
+        border: 4px solid transparent;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: ${(props) => props.theme.scrollBar.commonBackgroundColor};
+        border-radius: 12px;
     }
     
     h1 h2 h3 h4 h5 {
@@ -127,36 +139,18 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     .default-layout {
-        padding: ${DEFAULT_PADDING.OVER_QHD};
     }
-    .footer {
-        height: 150px;
-        background-color: ${(props) => props.theme.footer.backgroundColor};
-        padding: ${FOOTER_PADDING.OVER_QHD};
-      
-        transition: background-color 0.5s ease;
 
-        p {
-          color: ${(props) => props.theme.footer.fontColor};
-          font-size: 0.7em;
-          text-decoration: none;
-        }
-    }
-    
-    @media (max-width: ${LENGTH_FHD}px) {
-        .default-layout {
-            padding: ${DEFAULT_PADDING.FHD};
-        }
-        .footer {
-            padding: ${FOOTER_PADDING.FHD};
-        }
-    }
-    @media (max-width: ${LENGTH_MOBILE}px) {
-        .default-layout {
-            padding: ${DEFAULT_PADDING.MOBILE};
-        }
-        .footer {
-            padding: ${FOOTER_PADDING.MOBILE};
-        }
+    .footer {
+      height: 150px;
+      background-color: ${(props) => props.theme.footer.backgroundColor};
+
+      transition: background-color 0.5s ease;
+
+      p {
+        color: ${(props) => props.theme.footer.fontColor};
+        font-size: 0.7em;
+        text-decoration: none;
+      }
     }
 `;

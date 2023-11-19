@@ -10,8 +10,8 @@ export class SeriesService extends Service {
     private seriesRepository: SeriesRepository | null = null;
 
     private async init() {
-        this.postRepository = await PostRepository.getInstance();
-        this.seriesRepository = await SeriesRepository.getInstance();
+        this.postRepository = new PostRepository();
+        this.seriesRepository = new SeriesRepository();
     }
 
     public static async getInstance(): Promise<SeriesService> {
@@ -22,29 +22,26 @@ export class SeriesService extends Service {
         return SeriesService.instance;
     }
 
-
-    public getList(): SeriesData[] {
+    public async getList(): Promise<SeriesData[] >{
         if(!(this.seriesRepository && this.postRepository)) {
             throw new Error("Initial Failed Error");
         }
-
-        return this.seriesRepository.getList();
+        return await this.seriesRepository.getList();
     }
 
-    public getSeries(name: string): SeriesData | null {
+    public async getSeries(name: string): Promise<SeriesData | null> {
         if(!(this.seriesRepository && this.postRepository)) {
             throw new Error("Initial Failed Error");
         }
-
-        return this.seriesRepository.getSeries(name);
+        return await this.seriesRepository.getSeries(name);
     }
 
-    public getPostsFromSeries(seriesName: string, startIndex: number = 0, pageSize: number = 10): PostListData | null {
+    public async getPostsFromSeries(seriesName: string, startIndex: number = 0, pageSize: number = 10): Promise<PostListData | null> {
         if(!(this.seriesRepository && this.postRepository)) {
             throw new Error("Initial Failed Error");
         }
 
-        if (this.seriesRepository.getSeries(seriesName) === null) {
+        if (await this.seriesRepository.getSeries(seriesName) === null) {
             return null;
         }
         return this.postRepository.getList(startIndex, pageSize, {seriesName: seriesName});

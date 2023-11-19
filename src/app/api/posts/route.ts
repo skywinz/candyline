@@ -5,7 +5,7 @@ import {PostFilter} from '@/types/post';
 
 export const GET = async (req: Request) => {
     const queryParams = new URL(req.url).searchParams;
-    const startIndex = parseInt(queryParams.get('offset') ?? '0');
+    const startIndex = parseInt(queryParams.get('offset') ?? '99999999');
     const pageSize = parseInt(queryParams.get('size') ?? '10');
 
     const filter: PostFilter = {}
@@ -22,7 +22,7 @@ export const GET = async (req: Request) => {
     });
 
     const service = await BlogPostService.getInstance();
-    const _res = service.getList(startIndex, pageSize, filter);
+    const _res = await service.getList(startIndex, pageSize, filter);
     if (!_res) {
         // 절대 나올수가 없는 에러이나 eslint에서 계속 지랄해서 분기처리
         return NextResponse.json({error: 'server error'}, {status: 500});

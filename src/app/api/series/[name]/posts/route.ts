@@ -10,7 +10,7 @@ export const GET = async (req: Request, { params }: {params: SeriesPostListReque
     const pageSize = parseInt(queryParams.get('size') ?? '10');
 
     const service = await SeriesService.getInstance();
-    const posts = service.getPostsFromSeries(name, startIndex, pageSize);
+    const posts = await service.getPostsFromSeries(name, startIndex, pageSize);
 
     if (posts === null) {
         return NextResponse.json({error: 'Series Not Found'}, {status: 404});

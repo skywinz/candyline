@@ -9,15 +9,18 @@ import {ThemeProvider} from 'styled-components';
 import useTheme from '@/hooks/useTheme';
 import {RecoilRoot} from 'recoil';
 import {ClipLoader} from 'react-spinners';
+import useDefaultPadding from '@/hooks/useDefaultPadding';
 
 
 const App = ({ children }: {children: React.ReactNode}) => {
     const { themeStyle } = useTheme();
     const [isClient, setIsClient] = useState(false);
+    const {defualtPaddingValue} = useDefaultPadding();
 
     useEffect(() => {
         setIsClient(true);
     }, []);
+
 
     if (!isClient) {
         return (
@@ -38,7 +41,7 @@ const App = ({ children }: {children: React.ReactNode}) => {
             <>
                 <GlobalStyle />
                 <Navbar />
-                <div className='default-layout'>
+                <div className='default-layout' style={{padding: defualtPaddingValue}}>
                     {children}
                 </div>
                 <Footer />
