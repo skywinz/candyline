@@ -122,6 +122,10 @@ export const LightThemes = {
         normalFontColor: ColorBase.blue300,
         hoveredBackgroundColor: ColorBase.blue350,
         hoveredFontColor: ColorBase.white,
+    },
+    scrollBar: {
+        commonBackgroundColor: ColorBase.blue12,
+        commonColor: ColorBase.blue200,
     }
 }
 
@@ -245,5 +249,9 @@ export const DarkThemes = {
         normalFontColor: ColorBase.yellow50,
         hoveredBackgroundColor: ColorBase.yellow150,
         hoveredFontColor: ColorBase.black100,
+    },
+    scrollBar: {
+        commonBackgroundColor: ColorBase.darkyellow50,
+        commonColor: ColorBase.yellow150,
     }
 }
