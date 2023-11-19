@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import {AiOutlineClose} from 'react-icons/ai';
 import {SIDEBAR_MOVE_TIME} from '@/styles/constants';
-import {useRouter} from 'next/navigation';
 import {useState} from 'react';
 
 
@@ -16,11 +15,8 @@ interface SidebarArgs {
 
 const Sidebar = ({isVisible, setIsVisible}: SidebarArgs) => {
     const [searchWord, setSearchWord] = useState('');
-    const router  = useRouter();
 
     const searchButtonHandler = () => {
-        // TODO 개션 필요
-        // router.push(`/posts?word=${searchWord}`);
         window.location.href = `/posts?word=${searchWord}`;
     }
 
@@ -66,7 +62,7 @@ const Main = styled.div`
     }
     .parent-layout {
         position: fixed;
-        z-index: 10000;
+        z-index: 100000;
         margin-top: -200px;
         margin-left: -4px;
         width: 0;
@@ -78,7 +74,7 @@ const Main = styled.div`
     }
     .parent-layout-visible {
         position: fixed;
-        z-index: 10000;
+        z-index: 100000;
         margin-top: -200px;
         width: 200px;
         height: 100%;

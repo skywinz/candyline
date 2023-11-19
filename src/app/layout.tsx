@@ -21,6 +21,7 @@ const App = ({ children }: {children: React.ReactNode}) => {
         setIsClient(true);
     }, []);
 
+
     if (!isClient) {
         return (
             <>

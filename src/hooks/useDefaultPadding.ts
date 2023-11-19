@@ -9,6 +9,7 @@ const useDefaultPadding = () => {
     });
     const paddingTopBottomValue = 30;
 
+
     const updatePadding = () => {
         let browserWidth;
         let browserStatus;
