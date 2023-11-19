@@ -1,4 +1,6 @@
 import ColorBase from '@/styles/colors';
+import {types} from 'sass';
+import Color = types.Color;
 
 export const LightThemes = {
     global: {
@@ -40,6 +42,7 @@ export const LightThemes = {
             pageMovingButtonIconColor: ColorBase.blue250,
             pageMovingButtonFontColor: ColorBase.blue200,
             pageMovingButtonTitleFontColor: ColorBase.black50,
+            readingProgressBarBackgroundColor: ColorBase.red350,
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray150,
@@ -162,6 +165,7 @@ export const DarkThemes = {
             pageMovingButtonIconColor: ColorBase.yellow150,
             pageMovingButtonTitleFontColor: ColorBase.gray50,
             pageMovingButtonFontColor: ColorBase.yellow150,
+            readingProgressBarBackgroundColor: ColorBase.yellow150,
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray25,

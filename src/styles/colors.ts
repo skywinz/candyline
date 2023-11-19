@@ -30,6 +30,7 @@ const ColorBase = {
     red200: '#ec4f6e',
     red250: '#e83658',
     red300: '#DC143C',
+    red350: '#b00d35',
 
     yellow50: '#fffcdc',
     yellow100: '#fffbb7',
