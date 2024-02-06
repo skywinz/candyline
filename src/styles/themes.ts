@@ -42,7 +42,7 @@ export const LightThemes = {
             pageMovingButtonIconColor: ColorBase.blue250,
             pageMovingButtonFontColor: ColorBase.blue200,
             pageMovingButtonTitleFontColor: ColorBase.black50,
-            readingProgressBarBackgroundColor: ColorBase.red350,
+            readingProgressBarBackgroundColor: ColorBase.blue300,
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray150,

@@ -5,7 +5,7 @@ import {getPostDetail} from '@/apis/internal/post';
 import {getInternalAPIHost} from '@/apis/internal';
 import Utterances from '@/components/common/Utterances';
 import PostPrevAndNextContainer from '@/components/post/detail/PostPrevAndNextContainer';
-import NavbarPostReadProgress from '@/components/common/NaverPostReadProgress';
+import NavbarPostReadProgress from '@/components/common/NavbarPostReadProgress';
 
 interface PostDetailPageArgs {
     id: string;
