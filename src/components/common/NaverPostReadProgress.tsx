@@ -16,21 +16,21 @@ const NavbarPostReadProgress = () => {
 
 const Layout = styled.div`
     width: 100%;
-    height: 5px;
+    height: 4px;
     display: flex;
-    margin-top: -16px;
+    margin-top: -15px;
 `;
 
 const ProgressRead = styled.div`
     background-color: ${(props) => props.theme.main.postDetail.readingProgressBarBackgroundColor};
-    box-shadow: 5px 5px 10px ${(props) => props.theme.main.postDetail.readingProgressBarBackgroundColor};
     border-radius: 20px;
   
-    transition: background-color 0.4s, box-shadow 0.4s;
+    transition: background-color 0.4s, box-shadow 0.4s, width 0.3s ease-in-out;
 `;
 
 const ProgressUnRead = styled.div`
     background-color: transparent;
+    transition: width 0.3s ease-in-out;
 `;
 
 export default NavbarPostReadProgress;
