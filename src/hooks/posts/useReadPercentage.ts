@@ -31,10 +31,10 @@ const useReadPercentage = () => {
         return () => {
             window.removeEventListener('scroll', scrollHandler);
         }
-    }, [maxHeight, currentHeight]);
+    }, [maxHeight, currentHeight, browserWidth]);
 
     return {
-        percentage: !maxHeight|| !currentHeight ? 0 : (currentHeight / maxHeight) * 100
+        percentage: !maxHeight || !currentHeight ? 0 : Math.round((currentHeight / maxHeight) * 10) * 10
     }
 }
 
