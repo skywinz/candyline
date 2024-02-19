@@ -1,6 +1,7 @@
-# Dev-blog
+# Angeline-Theme
 
-SkyWINZ 기술 블로그 입니다.
+* NextJS기반의 블로그 플랫폼 입니다.
+* Angeline Styled로 개발중이며 Angeline은 때되면 공개 예정입니다
 
 ## Functions
 * 포스트 작성
@@ -11,6 +12,7 @@ SkyWINZ 기술 블로그 입니다.
 ## Installation
 ```
 $ npm i
+$ npm run setup
 $ npm run dev
 ```
 
