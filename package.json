@@ -1,6 +1,6 @@
 {
-  "name": "dev-blog",
-  "version": "0.1.0",
+  "name": "angeline-theme",
+  "version": "0.3.2",
   "private": true,
   "scripts": {
     "setup": "ts-node ./src/scripts/setup.ts",

@@ -1,13 +1,6 @@
 # Angeline-Theme
 
-* NextJS기반의 블로그 플랫폼 입니다.
-* Angeline Styled로 개발중이며 Angeline은 때되면 공개 예정입니다
-
-## Functions
-* 포스트 작성
-* 태그 시스템
-* 시리즈 단위로 서로 관련있는 포스트를 하나로 묶기 가능
-
+NextJS Based Blog Platform
 
 ## Installation
 ```
