@@ -20,8 +20,8 @@ export class BlogPostService extends Service {
         return BlogPostService.instance;
     }
 
-    public async getDetail(postId: string): Promise<PostData | null | undefined> {
-        return this.repository?.getDetail(postId);
+    public async getDetail(serialCode: string): Promise<PostData | null | undefined> {
+        return this.repository?.getDetail(serialCode);
     }
 
     public async getList(startIndex: number = 99999999, pageSize: number = 10, filter: PostFilter = {}) {
