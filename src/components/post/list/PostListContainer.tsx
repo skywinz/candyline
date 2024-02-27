@@ -19,7 +19,7 @@ const PostListContainer = ({host}: {host: string}) => {
     }
 
     const postListDataStatus = usePostPagination(host, POST_PAGINATION_SIZE, filter);
-    const PostItemComponents = postListDataStatus.posts.map((post) => <PostListCard key={post.id} post={post} />);
+    const PostItemComponents = postListDataStatus.posts.map((post) => <PostListCard key={post.serialCode} post={post} />);
     const loadingComponents = Array.from({length: 4}, (_, idx) => <PostListCard key={idx}/>)
 
     return (

@@ -8,13 +8,13 @@ import PostPrevAndNextContainer from '@/components/post/detail/PostPrevAndNextCo
 import NavbarPostReadProgress from '@/components/common/NavbarPostReadProgress';
 
 interface PostDetailPageArgs {
-    id: string;
+    serialCode: string;
 }
 
 
 const PostDetailPage = async ({ params }: {params: PostDetailPageArgs}) => {
-    const { id } = params;
-    const {data, statusCode} = await getPostDetail(getInternalAPIHost(), id, 'no-cache');
+    const { serialCode } = params;
+    const {data, statusCode} = await getPostDetail(getInternalAPIHost(), serialCode, 'no-cache');
 
     if (statusCode === 404) {
         redirect('/not-found');

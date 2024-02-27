@@ -14,7 +14,7 @@ interface PostListByTagContainerArgs {
 const PostListbyTagContainer = ({tagName, host}: PostListByTagContainerArgs) => {
     const postListDataStatus = usePostPagination(host, TAG_POST_PAGINATION_SIZE, {tags: [tagName]});
     const postListItems = postListDataStatus.posts.map((post, idx) =>
-        <PostListByTagItem key={post.id} post={post} index={idx + 1} />);
+        <PostListByTagItem key={post.serialCode} post={post} index={idx + 1} />);
 
     return (
         <Layout>

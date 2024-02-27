@@ -1,7 +1,7 @@
 
 // Base
 export interface BasePostData {
-    id: string;
+    serialCode: string;
     date: Date;
     image?: string;
     series?: string;
@@ -12,7 +12,7 @@ export interface BasePostData {
 
 
 export interface PrevNextPostItem {
-    id: string;
+    serialCode: string;
     title: string;
 }
 
@@ -41,7 +41,7 @@ export interface PostFilter {
 
 // Request
 export interface PostDetailRequest {
-    id: string;
+    serialCode: string;
 }
 
 // Hook

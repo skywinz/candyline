@@ -7,8 +7,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const PostListByTagItem = ({ post, index }: {post: PostCategory, index: number}) => {
-    const { date, title, id } = post;
-    const postUrl = `/posts/${id}`;
+    const { date, title, serialCode } = post;
+    const postUrl = `/posts/${serialCode}`;
     const dateString = date2String(new Date(date));
 
     return (
