@@ -16,7 +16,7 @@ const Footer = () => {
                 padding: `40px ${defaultPaddingLeftRightValue}px 40px ${defaultPaddingLeftRightValue}px`
             }}
         >
-            <p>Copyright 2023. SkyWINZ(DevTeam), recoma. All rights reserved.</p>
+            <p>Copyright 2024. SkyWINZ(DevTeam), recoma. All rights reserved.</p>
             <div style={{
                 display: 'flex',
             }}>
