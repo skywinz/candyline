@@ -8,19 +8,19 @@ import {Post, PostAttributes, PostTag, PostTagAttributes} from '@/server/models'
 import PostCategoryCombinator from '@/server/db-combinator/post';
 
 export class PostRepository extends Repository {
-    public async getDetail(postId: string): Promise<PostData | null> {
-        const postInstance: Model<PostAttributes> | null = await Post.findOne({where: { id: postId }});
+    public async getDetail(serialCode: string): Promise<PostData | null> {
+        const postInstance: Model<PostAttributes> | null = await Post.findOne({where: { serialCode: serialCode }});
         if (!postInstance) {
             return null;
         }
 
         const tagInstances: Model<PostTagAttributes>[] = await PostTag.findAll({
-            where: {postPk: postInstance.dataValues.pk}
+            where: {postId: postInstance.dataValues.id}
         });
 
         const postCategory = new PostCategoryCombinator(postInstance, tagInstances).get();
 
-        const fullPath = `${PATH_DIR_POST}/${postId}.md`;
+        const fullPath = `${PATH_DIR_POST}/${serialCode}.md`;
         if(!fs.existsSync(fullPath)) {
             return null;
         }
@@ -44,13 +44,13 @@ export class PostRepository extends Repository {
 
         const prev: PrevNextPostItem | null = (
             prevPostInstance ? {
-                id: prevPostInstance.dataValues.id,
+                serialCode: prevPostInstance.dataValues.serialCode,
                 title: prevPostInstance.dataValues.title
             } : null
         );
         const next: PrevNextPostItem | null = (
             nextPostInstance ? {
-                id: nextPostInstance.dataValues.id,
+                serialCode: nextPostInstance.dataValues.serialCode,
                 title: nextPostInstance.dataValues.title
             } : null
         );
@@ -65,7 +65,7 @@ export class PostRepository extends Repository {
 
     public async getList(startIndex: number, pageSize: number = 10, filter: PostFilter = {}): Promise<PostListData> {
         const queryFilter: WhereOptions = {
-            pk: {
+            id: {
                 [Op.lt]: startIndex,
             }
         };
@@ -90,7 +90,7 @@ export class PostRepository extends Repository {
             }],
             where: queryFilter,
             limit: pageSize,
-            order: [['pk', 'DESC']]
+            order: [['id', 'DESC']]
         }) || [];
 
         const posts: PostCategory[] = postInstances.map((postInstance) =>
@@ -98,17 +98,17 @@ export class PostRepository extends Repository {
 
         let nextIndex = null;
         if (postInstances.length > 0) {
-            const nextStartPk = postInstances[postInstances.length - 1].dataValues.pk;
+            const nextStartId = postInstances[postInstances.length - 1].dataValues.id;
             const { count } = await Post.findAndCountAll({
                 where: {
-                    pk: {
-                        [Op.lt]: nextStartPk,
+                    id: {
+                        [Op.lt]: nextStartId,
                     }
                 },
                 limit: pageSize,
             });
             if (count) {
-                nextIndex = nextStartPk;
+                nextIndex = nextStartId;
             }
         }
         return {posts, nextIndex};

@@ -8,7 +8,7 @@ import usePostPagination from '@/hooks/posts/usePostPagination';
 const PostListAboutSeriesContainer = ({seriesName, host}: {seriesName: string, host: string}) => {
     const postListDataStatus = usePostPagination(host, SERIES_POST_PAGINATION_SIZE, {seriesName: seriesName});
     const postListItems = postListDataStatus.posts.map((post, idx) =>
-        <PostListAboutSeriesItem key={post.id} index={idx + 1} post={post} />);
+        <PostListAboutSeriesItem key={post.serialCode} index={idx + 1} post={post} />);
     
     return (
         <Layout>

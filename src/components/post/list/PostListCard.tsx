@@ -11,8 +11,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const PostListCard = ({post}: {post?: PostCategory}) => {
-    const {tags, title, summary, id, series, date} = post ? post : {tags: [], title: '', summary: '', id: '', series: '', date: ''};
-    const detailURL = `/posts/${id}`;
+    const {tags, title, summary, serialCode, series, date} = post ? post : {tags: [], title: '', summary: '', serialCode: '', series: '', date: ''};
+    const detailURL = `/posts/${serialCode}`;
     const seriesURL = `/series/${series}`;
     const dateString = date ? date2String(new Date(date)) : '';
 

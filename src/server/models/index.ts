@@ -21,12 +21,12 @@ export interface PostSeriesAttributes {
 export interface PostTagAttributes {
     id?: number;
     name: string;
-    postPk?: number;
+    postId?: number;
 }
 
 export interface PostAttributes {
-    pk: number;
-    id: string;
+    id: number;
+    serialCode: string;
     title: string;
     imageUrl?: string;
     publicDate: Date;
@@ -36,12 +36,13 @@ export interface PostAttributes {
 }
 
 export const Post = sequelize.define<Model<PostAttributes>, PostAttributes>('post', {
-    pk: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
     },
-    id: {
-        comment: '포스트 고유 아이디',
+    serialCode: {
+        field: 'serial_code',
+        comment: '포스트 고유 식별자 이름',
         type: DataTypes.STRING(64),
         unique: true,
         allowNull: false,
@@ -107,8 +108,8 @@ Post.belongsTo(PostSeries);
 
 Post.hasMany(PostTag, {
     foreignKey: {
-        name: 'postPk',
-        field: 'post_pk',
+        name: 'postId',
+        field: 'post_id',
     },
     as: 'postTags',
 });
