@@ -3,10 +3,10 @@ import {POST_PAGINATION_SIZE} from '@/constants/client';
 
 export const getPostDetail = async (
     host: string,
-    id: string,
+    serialCode: string,
     cache: RequestCache,
 ) => {
-    const res = await fetch(`${host}/api/posts/${id}`, { cache });
+    const res = await fetch(`${host}/api/posts/${serialCode}`, { cache });
     const statusCode = res.status;
 
     if (res.ok) {

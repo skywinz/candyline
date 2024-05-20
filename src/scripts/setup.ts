@@ -72,11 +72,11 @@ const collectPosts = async (): Promise<PostCategory[]> => {
     // 빠른 속도로 세팅하기 위해
     // 비동기로 한꺼번에 수행
     return await Promise.all(postFiles.map(async (file): Promise<PostCategory> => {
-        const postId = file.name;
+        const postCode = file.name;
         const fullPath = `${file.dir}/${file.base}`;
         const post = matter(fs.readFileSync(fullPath, 'utf-8'));
         return {
-            id: postId,
+            serialCode: postCode,
             date: new Date(post.data.date),
             image: post.data.image,
             series: post.data.series,
@@ -94,8 +94,8 @@ const savePosts2database = async (posts: PostCategory[]) => {
     for (const postData of posts) {
         postData.date.setHours(postData.date.getHours() + 9);
         const postInstance = await Post.create({
-            pk: parseInt(postData.id.split('_')[0]),
-            id: postData.id,
+            id: parseInt(postData.serialCode.split('_')[0]),
+            serialCode: postData.serialCode,
             title: postData.title,
             imageUrl: postData.image,
             publicDate: postData.date ,
@@ -105,7 +105,7 @@ const savePosts2database = async (posts: PostCategory[]) => {
         for(const tag of postData.tags) {
             await PostTag.create({
                 name: tag,
-                postPk: postInstance.dataValues.pk,
+                postId: postInstance.dataValues.id,
             })
         }
     }

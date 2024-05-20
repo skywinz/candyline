@@ -19,7 +19,7 @@ class PostCategoryCombinator extends DBInstanceCombinator {
 
     public get(): PostCategory {
         return {
-            id: this.postInstance.dataValues.id,
+            serialCode: this.postInstance.dataValues.serialCode,
             date: this.postInstance.dataValues.publicDate,
             image: this.postInstance.dataValues.imageUrl,
             title: this.postInstance.dataValues.title,

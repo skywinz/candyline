@@ -15,7 +15,7 @@ interface PostMovingButtonParams {
 
 const PostMovingButton = (params: PostMovingButtonParams) => {
     const {direction, item, width} = params;
-    const {id, title} = item;
+    const {serialCode, title} = item;
     const iconCommonStyle: CSSProperties = {}
     const iconLeftStyle: CSSProperties = {
         ...iconCommonStyle,
@@ -50,7 +50,7 @@ const PostMovingButton = (params: PostMovingButtonParams) => {
     const Containers = direction == PAGE_MOVE_TO_LEFT ?
         [<IconContainer key={1} />, <TextContainer key={2} />] : [<TextContainer key={1} />, <IconContainer key={2} />];
     return (
-        <Link href={`/posts/${id}`} style={{ width }}>
+        <Link href={`/posts/${serialCode}`} style={{ width }}>
             <Layout style={{ width }}>
                 {Containers}
             </Layout>
