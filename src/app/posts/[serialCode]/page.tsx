@@ -6,6 +6,7 @@ import {getInternalAPIHost} from '@/apis/internal';
 import Utterances from '@/components/common/Utterances';
 import PostPrevAndNextContainer from '@/components/post/detail/PostPrevAndNextContainer';
 import NavbarPostReadProgress from '@/components/common/NavbarPostReadProgress';
+import PostTitleImage from '@/components/post/detail/PostTitleImage';
 
 interface PostDetailPageArgs {
     serialCode: string;
@@ -39,6 +40,10 @@ const PostDetailPage = async ({ params }: {params: PostDetailPageArgs}) => {
                 <NavbarPostReadProgress />
             </div>
             <PostTitleContainer title={data.title} date={new Date(data.date)} series={data.series} tags={data.tags} />
+            {
+                data.image &&
+                <PostTitleImage image={data.image} />
+            }
             <PostContentContainer content={data.content} />
             <PostPrevAndNextContainer prev={data.prev} next={data.next} />
             <Utterances />
