@@ -39,6 +39,7 @@ export const GlobalStyle = createGlobalStyle`
     h1 {
         border-bottom: 1px solid ${(props) => props.theme.markdown.h1.borderLineColor};
         border-left: 10px solid ${(props) => props.theme.markdown.h1.borderLineColor};
+        color: ${(props) => props.theme.markdown.h1.fontColor};
         padding-left: 10px;
         padding-bottom: 10px;
         font-size: 1.7em;

@@ -45,6 +45,7 @@ const ColorBase = {
 
     navajowhite: '#FFDEADFF',
 
+    orange150: '#ff622b',
     orange200: '#FF4500FF',
 }
 
