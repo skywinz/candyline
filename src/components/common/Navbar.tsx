@@ -73,4 +73,5 @@ const Category = styled.p`
 const MenuIconContainer = styled(AiOutlineMenu)`
     margin-top: 15px;
     cursor: pointer;
+    color: ${(props) => props.theme.main.navbar.menuIconColor};
 `;
