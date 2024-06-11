@@ -9,55 +9,55 @@ export const LightThemes = {
 
         themeButton: {
             backgroundColor: ColorBase.white,
-            iconColor: ColorBase.red200,
+            iconColor: ColorBase.black100,
         }
     },
     main: {
         navbar: {
             backgroundColor: ColorBase.white,
-            fontColor: ColorBase.red200,
-            borderBottomColor: ColorBase.red150,
-            itemColorHovered: ColorBase.red350,
-            shadowColor: ColorBase.red100,
-            menuIconColor: ColorBase.red300,
+            fontColor: ColorBase.black100,
+            borderBottomColor: ColorBase.black100,
+            itemColorHovered: ColorBase.red250,
+            shadowColor: ColorBase.gray50,
+            menuIconColor: ColorBase.black100,
         },
         sidebar: {
             backgroundColor: ColorBase.white,
             borderColor: ColorBase.gray150,
             itemColor: ColorBase.black999,
             hoveredItemColor: ColorBase.red200,
-            buttonBackgroundColor: ColorBase.red150,
+            buttonBackgroundColor: ColorBase.red300,
             buttonFontColor: ColorBase.white,
-            buttonHoveredBackgroundColor: ColorBase.red250,
+            buttonHoveredBackgroundColor: ColorBase.red350,
             postSearchBackgroundColor: ColorBase.white,
             postSearchFontColor: ColorBase.black999,
         },
         postDetail: {
-            titleBackgroundColor: ColorBase.red250,
+            titleBackgroundColor: ColorBase.black100,
             titleFontColor: ColorBase.white,
             seriesFontColor: ColorBase.black999,
             hoveredSeriesFontColor: ColorBase.red200,
             pageMovingButtonBackgroundColor: ColorBase.white,
-            pageMovingButtonBorderColor: ColorBase.red25,
-            pageMovingButtonHoveredBackgroundColor: ColorBase.red25,
-            pageMovingButtonIconColor: ColorBase.red250,
-            pageMovingButtonFontColor: ColorBase.red200,
+            pageMovingButtonBorderColor: ColorBase.black100,
+            pageMovingButtonHoveredBackgroundColor: ColorBase.gray12,
+            pageMovingButtonIconColor: ColorBase.black100,
+            pageMovingButtonFontColor: ColorBase.black100,
             pageMovingButtonTitleFontColor: ColorBase.black50,
             readingProgressBarBackgroundColor: ColorBase.red300,
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray150,
-            postItemBorderColor: ColorBase.black100,
+            postItemBorderColor: ColorBase.red300,
             postItemBackgroundColor: ColorBase.white,
-            postItemTitleColor: ColorBase.red200,
-            postItemTitleHoveredColor: ColorBase.red350,
+            postItemTitleColor: ColorBase.black100,
+            postItemTitleHoveredColor: ColorBase.red250,
             postItemSeriesFontColor: ColorBase.black999,
             postItemSeriesFontColorHovered: ColorBase.red250,
             postItemShadowColorHovered: ColorBase.red50,
             postItemShadowColor: 'rgba(99, 99, 99, 0.2)',
         },
         seriesList: {
-            itemBorderColor: ColorBase.red150,
+            itemBorderColor: ColorBase.red300,
             itemBackgroundColor: ColorBase.white,
             itemTitleColor: ColorBase.black100,
             itemTitleColorHovered: ColorBase.red250,
@@ -78,8 +78,8 @@ export const LightThemes = {
     markdown: {
         h1: {
             backgroundColor: ColorBase.white,
-            fontColor: ColorBase.red200,
-            borderLineColor: ColorBase.red200,
+            fontColor: ColorBase.black100,
+            borderLineColor: ColorBase.red300,
         },
         blockquote: {
             normalBackgroundColor: ColorBase.red25,
@@ -97,11 +97,11 @@ export const LightThemes = {
             hoveredFontColor: ColorBase.red250,
         },
         table: {
-            backgroundColor: ColorBase.red25,
+            backgroundColor: ColorBase.gray12,
             fontColor: ColorBase.black999,
         },
         thead: {
-            backgroundColor: ColorBase.red250,
+            backgroundColor: ColorBase.black999,
             fontColor: ColorBase.white,
         },
         code: {
@@ -115,7 +115,7 @@ export const LightThemes = {
         },
     },
     footer: {
-        backgroundColor: ColorBase.black25,
+        backgroundColor: ColorBase.black100,
         fontColor: ColorBase.white,
     },
     tag: {
