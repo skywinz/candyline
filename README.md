@@ -1,4 +1,4 @@
-# Angeline-Theme
+# Skywinz-Theme
 
 NextJS Based Blog Platform
 
