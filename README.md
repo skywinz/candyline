@@ -27,10 +27,7 @@ socials:
   velog: https://google.com
   tistory: https://google.com
   naverblog: https://google.com
-  email: https://google.com
-  site1: https://google.com
-  site2: https://google.com
-  site3: https://google.com
+  site: https://google.com
 ```
 
 ### 포스트 추가

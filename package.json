@@ -42,7 +42,8 @@
     "sqlite3": "^5.1.6",
     "styled-components": "^6.0.8",
     "ts-node": "^10.9.1",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.1.4",

@@ -10,15 +10,25 @@ import useTheme from '@/hooks/useTheme';
 import {RecoilRoot} from 'recoil';
 import {ClipLoader} from 'react-spinners';
 import useDefaultPadding from '@/hooks/useDefaultPadding';
+import {getSocials} from '@/apis/internal/social';
+import useSocialStatus from '@/stores/social';
 
 
 const App = ({ children }: {children: React.ReactNode}) => {
     const { themeStyle } = useTheme();
     const [isClient, setIsClient] = useState(false);
     const {defualtPaddingValue} = useDefaultPadding();
+    const { isExpired: isSocialExpired, update: updateSocialData } = useSocialStatus();
 
     useEffect(() => {
-        setIsClient(true);
+        (async () => {
+            if (isSocialExpired()) {
+                const socials = await getSocials() || [];
+                updateSocialData(socials);
+            } else {
+            }
+            setIsClient(true);
+        })();
     }, []);
 
 

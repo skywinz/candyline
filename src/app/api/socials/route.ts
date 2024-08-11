@@ -11,7 +11,5 @@ export const GET = async (_: Request) => {
         url: social[1],
     }));
 
-    console.log(socials);
-
     return NextResponse.json({socials});
 }
