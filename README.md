@@ -11,6 +11,25 @@ $ npm run dev
 
 ## Usage
 
+### 소셜 관련 정보 추가
+
+```_socials.yml``` 에 아래와 같이 소셜 관련 정보들을 입력하면, 하단과 소개 페이지에 소셜 아이콘을 생성할 수 있습니다.
+
+```yaml
+socials:
+  github: https://github.com/recoma96
+  instagram: https://google.com
+  facebook: https://google.com
+  x: https://google.com
+  linkedin: https://google.com
+  youtube: https://google.com
+  soundcloud: https://google.com
+  velog: https://google.com
+  tistory: https://google.com
+  naverblog: https://google.com
+  site: https://google.com
+```
+
 ### 포스트 추가
 1. ```_posts``` 디렉토리 안에 마크다운 파일을 작성합니다.
 2. 이미지가 별도로 필요할 경우, ```public/images/posts``` 에 이미지를 추가합니다. 마크다운 파일에서는 URL을 ```/images/posts/...``` 로 연동합니다.

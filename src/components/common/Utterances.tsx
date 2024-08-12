@@ -1,9 +1,9 @@
 'use client';
 
-import useTheme from "@/hooks/useTheme";
+import useThemeStatus from '@/stores/theme';
 
 const Utterances = () => {
-    const { theme } = useTheme();
+    const {type} = useThemeStatus();
 
     return (
         <section
@@ -16,7 +16,7 @@ const Utterances = () => {
                 scriptElement.setAttribute('src', 'https://utteranc.es/client.js');
                 scriptElement.setAttribute('repo', 'skywinz/dev-blog');
                 scriptElement.setAttribute('issue-term', 'pathname');
-                scriptElement.setAttribute('theme', `github-${theme}`);
+                scriptElement.setAttribute('theme', `github-${type}`);
                 scriptElement.setAttribute('crossorigin', 'anonymous');
                 scriptElement.setAttribute('async', 'true');
                 element.replaceChildren(scriptElement);

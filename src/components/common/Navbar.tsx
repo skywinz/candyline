@@ -22,7 +22,7 @@ const Navbar = () => {
             }}>
                 <ContentContainer>
                     <MenuIconContainer size={28} onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
-                    <Category onClick={() => router.push('/')}>SkyWINZ</Category>
+                    <Category onClick={() => router.push('/')}>Angeline</Category>
                     <ThemeSelector extendedStyle={{marginTop: "12px"}}/>
                 </ContentContainer>
             </NavbarLayout>
@@ -73,4 +73,5 @@ const Category = styled.p`
 const MenuIconContainer = styled(AiOutlineMenu)`
     margin-top: 15px;
     cursor: pointer;
+    color: ${(props) => props.theme.main.navbar.menuIconColor};
 `;

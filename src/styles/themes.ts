@@ -9,46 +9,47 @@ export const LightThemes = {
 
         themeButton: {
             backgroundColor: ColorBase.white,
-            iconColor: ColorBase.blue300,
+            iconColor: ColorBase.black100,
         }
     },
     main: {
         navbar: {
             backgroundColor: ColorBase.white,
-            fontColor: ColorBase.blue300,
-            borderBottomColor: ColorBase.blue300,
-            itemColorHovered: ColorBase.blue150,
-            shadowColor: ColorBase.blue50,
+            fontColor: ColorBase.black100,
+            borderBottomColor: ColorBase.black100,
+            itemColorHovered: ColorBase.red250,
+            shadowColor: ColorBase.gray50,
+            menuIconColor: ColorBase.black100,
         },
         sidebar: {
             backgroundColor: ColorBase.white,
-            borderColor: ColorBase.blue250,
+            borderColor: ColorBase.gray150,
             itemColor: ColorBase.black999,
             hoveredItemColor: ColorBase.red200,
-            buttonBackgroundColor: ColorBase.blue250,
+            buttonBackgroundColor: ColorBase.red300,
             buttonFontColor: ColorBase.white,
-            buttonHoveredBackgroundColor: ColorBase.blue350,
+            buttonHoveredBackgroundColor: ColorBase.red350,
             postSearchBackgroundColor: ColorBase.white,
             postSearchFontColor: ColorBase.black999,
         },
         postDetail: {
-            titleBackgroundColor: ColorBase.blue350,
+            titleBackgroundColor: ColorBase.black100,
             titleFontColor: ColorBase.white,
             seriesFontColor: ColorBase.black999,
             hoveredSeriesFontColor: ColorBase.red200,
             pageMovingButtonBackgroundColor: ColorBase.white,
-            pageMovingButtonBorderColor: ColorBase.blue12,
-            pageMovingButtonHoveredBackgroundColor: ColorBase.blue12,
-            pageMovingButtonIconColor: ColorBase.blue250,
-            pageMovingButtonFontColor: ColorBase.blue200,
+            pageMovingButtonBorderColor: ColorBase.black100,
+            pageMovingButtonHoveredBackgroundColor: ColorBase.gray12,
+            pageMovingButtonIconColor: ColorBase.black100,
+            pageMovingButtonFontColor: ColorBase.black100,
             pageMovingButtonTitleFontColor: ColorBase.black50,
-            readingProgressBarBackgroundColor: ColorBase.blue300,
+            readingProgressBarBackgroundColor: ColorBase.red300,
         },
         postList: {
             postListItemSummaryFontColor: ColorBase.gray150,
-            postItemBorderColor: ColorBase.red150,
+            postItemBorderColor: ColorBase.red300,
             postItemBackgroundColor: ColorBase.white,
-            postItemTitleColor: ColorBase.blue300,
+            postItemTitleColor: ColorBase.black100,
             postItemTitleHoveredColor: ColorBase.red250,
             postItemSeriesFontColor: ColorBase.black999,
             postItemSeriesFontColorHovered: ColorBase.red250,
@@ -56,9 +57,9 @@ export const LightThemes = {
             postItemShadowColor: 'rgba(99, 99, 99, 0.2)',
         },
         seriesList: {
-            itemBorderColor: ColorBase.red150,
+            itemBorderColor: ColorBase.red300,
             itemBackgroundColor: ColorBase.white,
-            itemTitleColor: ColorBase.blue300,
+            itemTitleColor: ColorBase.black100,
             itemTitleColorHovered: ColorBase.red250,
             itemShadowColorHovered: ColorBase.red50,
         },
@@ -68,22 +69,22 @@ export const LightThemes = {
             postItemFontColor: ColorBase.blue250,
         },
         tagDetail: {
-            headerTitleBackgroundColor: ColorBase.blue300,
+            headerTitleBackgroundColor: ColorBase.black50,
             headerTitleFontColor: ColorBase.white,
-            headerTagnameFontColor: ColorBase.blue300,
-            postItemFontColor: ColorBase.blue250,
+            headerTagnameFontColor: ColorBase.black50,
+            postItemFontColor: ColorBase.black50,
         }
     },
     markdown: {
         h1: {
             backgroundColor: ColorBase.white,
-            fontColor: ColorBase.black999,
-            borderLineColor: ColorBase.blue300,
+            fontColor: ColorBase.black100,
+            borderLineColor: ColorBase.red300,
         },
         blockquote: {
-            normalBackgroundColor: ColorBase.blue12,
-            hoveredBackgroundColor: ColorBase.blue25,
-            borderColor: ColorBase.blue300,
+            normalBackgroundColor: ColorBase.red25,
+            hoveredBackgroundColor: ColorBase.red50,
+            borderColor: ColorBase.red300,
         },
         strong: {
             fontColor: ColorBase.red300,
@@ -96,11 +97,11 @@ export const LightThemes = {
             hoveredFontColor: ColorBase.red250,
         },
         table: {
-            backgroundColor: ColorBase.blue12,
+            backgroundColor: ColorBase.gray12,
             fontColor: ColorBase.black999,
         },
         thead: {
-            backgroundColor: ColorBase.blue250,
+            backgroundColor: ColorBase.black999,
             fontColor: ColorBase.white,
         },
         code: {
@@ -114,18 +115,18 @@ export const LightThemes = {
         },
     },
     footer: {
-        backgroundColor: ColorBase.blue300,
+        backgroundColor: ColorBase.black100,
         fontColor: ColorBase.white,
     },
     tag: {
-        normalBackgroundColor: ColorBase.blue12,
-        normalFontColor: ColorBase.blue300,
-        hoveredBackgroundColor: ColorBase.blue350,
+        normalBackgroundColor: ColorBase.red25,
+        normalFontColor: ColorBase.red300,
+        hoveredBackgroundColor: ColorBase.red350,
         hoveredFontColor: ColorBase.white,
     },
     scrollBar: {
-        commonBackgroundColor: ColorBase.blue12,
-        commonColor: ColorBase.blue200,
+        commonBackgroundColor: ColorBase.gray12,
+        commonColor: ColorBase.black100,
     }
 }
 
@@ -146,6 +147,7 @@ export const DarkThemes = {
             borderBottomColor: ColorBase.yellow250,
             itemColorHovered: ColorBase.yellow100,
             shadowColor: ColorBase.yellow200,
+            menuIconColor: ColorBase.yellow200,
         },
         sidebar: {
             backgroundColor: ColorBase.black50,

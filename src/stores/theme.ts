@@ -1,35 +1,28 @@
-import {atom} from 'recoil';
 import {DarkThemes, LightThemes} from '@/styles/themes';
+import {create} from 'zustand';
+import {persist} from 'zustand/middleware';
 
-const themeState = atom({
-    key: 'theme',
-    default: LightThemes,
-    effects: [
-        ({setSelf, onSet}) => {
-            let themeValue: string = 'light';
+interface ThemeStatus {
+    type: string;
+    styles: any;
+    update: (type: string) => void;
+}
 
-            if (typeof window !== 'undefined') {
-                let _themeValue: string | null = localStorage.getItem('theme');
-                if (_themeValue) {
-                    themeValue = _themeValue;
-                }
-            }
-
-            if (themeValue === 'dark') {
-                setSelf(DarkThemes);
-            } else {
-                setSelf(LightThemes);
-            }
-
-            onSet((newValue, _, __) => {
-                if (newValue === DarkThemes) {
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                }
-            });
+const useThemeStatus = create(
+    persist<ThemeStatus>(
+        (set, get) => ({
+            type: 'light',
+            styles: LightThemes,
+            update: (type: string) => set((state) => ({
+                ...state,
+                type: type === 'dark' ? 'dark' : 'light',
+                styles: type === 'dark' ? DarkThemes : LightThemes,
+            }))
+        }),
+        {
+            name: 'themeStatus'
         }
-    ]
-});
+    )
+);
 
-export default themeState;
+export default useThemeStatus;

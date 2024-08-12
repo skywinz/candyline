@@ -1,25 +1,24 @@
 'use client';
 
-import useTheme from '@/hooks/useTheme';
 import { BiSolidSun } from 'react-icons/bi';
 import { RiMoonClearFill } from 'react-icons/ri';
 import {DarkThemes, LightThemes} from '@/styles/themes';
-import styled from 'styled-components';
+import useThemeStatus from '@/stores/theme';
 
 const ThemeSelector = ({extendedStyle}: {extendedStyle: object}) => {
-    const {theme, setTheme} = useTheme();
+    const {type, update: updateTheme} = useThemeStatus();
 
-    const Icon = theme === 'light' ? BiSolidSun : RiMoonClearFill;
-    const color = theme === 'light' ? LightThemes.global.themeButton.iconColor : DarkThemes.global.themeButton.iconColor;
-    const nextTheme = theme === 'light' ? 'dark' : 'light';
-    const changeThemeHandler = () => setTheme(nextTheme);
+    const Icon = type === 'light' ? BiSolidSun : RiMoonClearFill;
+    const color = type === 'light' ? LightThemes.global.themeButton.iconColor : DarkThemes.global.themeButton.iconColor;
+    const nextTheme = type === 'light' ? 'dark' : 'light';
+    const changeThemeHandler = () => updateTheme(nextTheme);
 
     return (
         <Icon
             size={32}
             style={{
                 ...extendedStyle,
-                cursor: "pointer",
+                cursor: 'pointer',
             }}
             color={color}
             onClick={changeThemeHandler}
